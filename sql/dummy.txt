@@ -1,0 +1,108 @@
+-----------------------------
+-- Collections
+-----------------------------
+INSERT INTO collections (name, season, year, description, cover_image_url) VALUES
+('Seoul Bloom', 'Spring', 2023, 'Pastel florals and lightweight fabrics inspired by cherry blossom season', 'https://cdn.dancheongdiary.com/covers/seoul-bloom.jpg'),
+('Hanbok Revival', 'Fall', 2023, 'Modern interpretations of traditional Korean silhouettes', 'https://cdn.dancheongdiary.com/covers/hanbok-revival.jpg'),
+('Jeju Coastal', 'Summer', 2024, 'Breathable linens and ocean-inspired hues', 'https://cdn.dancheongdiary.com/covers/jeju-coastal.jpg');
+
+-----------------------------
+-- Fashion Items
+-----------------------------
+INSERT INTO fashion_items (collection_id, name, type, description, color, pattern, price, image_url, featured) VALUES
+(1, 'Norigae Blouse', 'Top', 'Silk blouse with detachable traditional pendant', 'Sky Blue', 'Floral', 89.99, 'https://cdn.dancheongdiary.com/items/norigae-blouse.jpg', true),
+(1, 'Cherry Skirt', 'Bottom', 'A-line skirt with embroidered cherry blossoms', 'Blush Pink', 'Embroidery', 65.50, 'https://cdn.dancheongdiary.com/items/cherry-skirt.jpg', false),
+(2, 'Modern Jeogori', 'Outerwear', 'Cropped jacket with dancheong-inspired lining', 'Crimson', 'Geometric', 120.00, 'https://cdn.dancheongdiary.com/items/modern-jeogori.jpg', true),
+(2, 'Hwarang Pants', 'Bottom', 'Wide-leg trousers with warrior-inspired pleats', 'Charcoal', 'Solid', 95.00, 'https://cdn.dancheongdiary.com/items/hwarang-pants.jpg', false),
+(3, 'Haenyeo Wrap', 'Dress', 'Wrap dress inspired by Jeju divers', 'Seafoam Green', 'Wave', 78.99, 'https://cdn.dancheongdiary.com/items/haenyeo-wrap.jpg', true);
+
+-----------------------------
+-- Cultural Notes
+-----------------------------
+INSERT INTO cultural_notes (title, content, category, cover_image, author) VALUES
+('Hanbok Evolution', 'From Joseon dynasty to streetwear adaptations...', 'Hanbok', 'https://cdn.dancheongdiary.com/culture/hanbok-evolution.jpg', 'Ji-hyun Park'),
+('Bojagi in Modern Fashion', 'How traditional wrapping cloths inspire zero-waste design...', 'Techniques', 'https://cdn.dancheongdiary.com/culture/bojagi-design.jpg', 'Min-jun Kim'),
+('Hallyu Style Revolution', 'K-pop influence on global fashion trends...', 'Modern', 'https://cdn.dancheongdiary.com/culture/hallyu-style.jpg', 'Soo-ah Lee'),
+('Royal Color Symbolism', 'Meaning behind traditional dancheong hues...', 'History', 'https://cdn.dancheongdiary.com/culture/color-symbolism.jpg', 'Yoon-ji Choi');
+
+-----------------------------
+-- Users
+-----------------------------
+INSERT INTO users (username, email, password_hash) VALUES
+('style_seeker', 'maya@email.com', 'hashed_password_1'),
+('kfashion_lover', 'david@email.com', 'hashed_password_2');
+
+-----------------------------
+-- Moodboards
+-----------------------------
+INSERT INTO moodboards (user_id, title, description, cover_image, is_public) VALUES
+(1, 'Spring Pastels', 'My ideal cherry blossom season look', 'https://cdn.dancheongdiary.com/moodboards/maya-spring.jpg', true),
+(1, 'Hanbok Fusion', 'Traditional meets contemporary', 'https://cdn.dancheongdiary.com/moodboards/maya-hanbok.jpg', false),
+(2, 'Coastal Vibes', 'Jeju-inspired summer outfits', 'https://cdn.dancheongdiary.com/moodboards/david-coastal.jpg', true);
+
+-----------------------------
+-- Moodboard Items
+-----------------------------
+INSERT INTO moodboard_items (moodboard_id, item_id, position) VALUES
+(1, 1, 1), (1, 2, 2), 
+(2, 3, 1), (2, 4, 2),
+(3, 5, 1);
+
+-----------------------------
+-- Street Locations
+-----------------------------
+INSERT INTO street_locations (name, neighborhood, description, latitude, longitude, featured_image) VALUES
+('Garosu-gil Trendsetters', 'Sinsa-dong', 'Epicenter of Seoul street fashion', 37.516785, 127.020428, 'https://cdn.dancheongdiary.com/locations/garosu-gil.jpg'),
+('Ikseon-dong Hanbok Alley', 'Jongno-gu', 'Traditional-modern fusion hotspot', 37.579618, 126.986000, 'https://cdn.dancheongdiary.com/locations/ikseon-dong.jpg'),
+('Haeundae Beach Styles', 'Busan', 'Coastal summer fashion hub', 35.158696, 129.160402, 'https://cdn.dancheongdiary.com/locations/haeundae.jpg');
+
+-----------------------------
+-- Trend Reports
+-----------------------------
+INSERT INTO trend_reports (title, content, season, year, dominant_colors, popular_patterns, cover_image) VALUES
+('Spring 2023 Pastel Wave', 'Soft hues dominate Seoul streets...', 'Spring', 2023, '["#F8D7DA", "#D4E2D4", "#FFE69A"]', '{"Floral","Gingham"}', 'https://cdn.dancheongdiary.com/trends/spring2023.jpg'),
+('Fall Hanbok Renaissance', 'Traditional elements reimagined...', 'Fall', 2023, '["#8C2F39", "#3A5BA0", "#2D2A32"]', '{"Dancheong","Brocade"}', 'https://cdn.dancheongdiary.com/trends/fall2023.jpg');
+
+-----------------------------
+-- Tags
+-----------------------------
+INSERT INTO tags (name, type) VALUES
+('Hanbok-Inspired', 'Style'), ('Pastel', 'Color'), ('Joseon', 'Era'), 
+('Silk', 'Fabric'), ('Streetwear', 'Style'), ('Oceanic', 'Color'),
+('Floral', 'Pattern'), ('Modern', 'Era'), ('Linen', 'Fabric'), 
+('Dancheong', 'Pattern');
+
+-----------------------------
+-- Item Tags
+-----------------------------
+INSERT INTO item_tags (item_id, tag_id) VALUES
+(1,1), (1,2), (1,4), (1,7),
+(2,2), (2,7),
+(3,1), (3,3), (3,6), (3,10),
+(4,1), (4,8),
+(5,5), (5,6), (5,9);
+
+-----------------------------
+-- Media
+-----------------------------
+INSERT INTO media (item_id, url, type, caption, position) VALUES
+(1, 'https://cdn.dancheongdiary.com/media/norigae-front.jpg', 'image', 'Front view', 1),
+(1, 'https://cdn.dancheongdiary.com/media/norigae-detail.mp4', 'video', 'Norigae detail', 2),
+(3, 'https://cdn.dancheongdiary.com/media/jeogori-360', '360-view', 'Rotating view', 1),
+(5, 'https://cdn.dancheongdiary.com/media/haenyeo-styling.jpg', 'image', 'Styled with accessories', 1);
+
+-----------------------------
+-- Lookbooks
+-----------------------------
+INSERT INTO lookbooks (title, description, cover_image) VALUES
+('Modern Hanbok Styling', '5 ways to wear traditional elements', 'https://cdn.dancheongdiary.com/lookbooks/hanbok-styling.jpg'),
+('Seaside to Street', 'Transitional Jeju looks', 'https://cdn.dancheongdiary.com/lookbooks/seaside-street.jpg');
+
+-----------------------------
+-- Lookbook Items
+-----------------------------
+INSERT INTO lookbook_items (lookbook_id, item_id, position, notes) VALUES
+(1, 3, 1, 'Pair with minimalist accessories'),
+(1, 4, 2, 'Tuck in cropped tops for elongation'),
+(2, 5, 1, 'Layer over swimwear for beach-to-dinner look'),
+(2, 1, 2, 'Knot at waist for summer vibe'); 

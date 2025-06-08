@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dancheong Diary | Korean-Inspired Fashion Lookbook</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        peach: {
+                            50: '#FFF8F5',
+                            100: '#FFE9DB',
+                            200: '#FFD0B5',
+                            300: '#FFB896',
+                            400: '#FF9A76',
+                            500: '#FF7D55',
+                        },
+                        charcoal: {
+                            800: '#2D2A32',
+                            900: '#1A181D',
+                        }
+                    },
+                    fontFamily: {
+                        display: ['Playfair Display', 'serif'],
+                        sans: ['Noto Sans KR', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .section-title {
+                @apply text-3xl md:text-4xl font-display font-bold text-charcoal-800 relative pb-4 mb-8;
+            }
+            .section-title::after {
+                content: '';
+                @apply absolute bottom-0 left-0 w-16 h-1 bg-peach-400;
+            }
+            .center-title::after {
+                @apply left-1/2 transform -translate-x-1/2;
+            }
+            .card-hover {
+                @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-xl;
+            }
+        }
+    </style>
+</head>
+<body class="bg-peach-50 font-sans text-charcoal-800">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm shadow-sm">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="text-2xl font-display font-bold text-peach-500">Dancheong<span class="text-charcoal-800">Diary</span></div>
+                <span class="ml-2 text-sm text-charcoal-800">단청 다이어리</span>
+            </div>
+            
+            <nav class="hidden md:block">
+                <ul class="flex space-x-8">
+                    <li><a href="#" class="font-medium hover:text-peach-500 transition-colors">Collections</a></li>
+                    <li><a href="#" class="font-medium hover:text-peach-500 transition-colors">Lookbook</a></li>
+                    <li><a href="#" class="font-medium hover:text-peach-500 transition-colors">Trends</a></li>
+                    <li><a href="#" class="font-medium hover:text-peach-500 transition-colors">Culture</a></li>
+                    <li><a href="#" class="font-medium hover:text-peach-500 transition-colors">About</a></li>
+                </ul>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <button class="md:hidden text-xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="hidden md:flex space-x-4 text-xl">
+                    <a href="#"><i class="fas fa-search hover:text-peach-500 transition-colors"></i></a>
+                    <a href="#"><i class="fas fa-user hover:text-peach-500 transition-colors"></i></a>
+                    <a href="#"><i class="fas fa-shopping-bag hover:text-peach-500 transition-colors"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-r from-peach-100 to-peach-200 overflow-hidden">
+        <div class="container mx-auto px-4 py-16 md:py-24 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-12 md:mb-0 z-10">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight mb-6">
+                    Modern Korean Fashion <br>
+                    <span class="text-peach-500">Inspired by Tradition</span>
+                </h1>
+                <p class="text-lg mb-8 max-w-lg">
+                    Discover the perfect fusion of contemporary style and Korean heritage. 
+                    Our curated collections bring traditional patterns and modern silhouettes together.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#" class="px-8 py-3 bg-peach-500 text-white rounded-full font-medium hover:bg-peach-400 transition-colors shadow-lg">
+                        Explore Collections
+                    </a>
+                    <a href="#" class="px-8 py-3 border-2 border-peach-500 text-peach-500 rounded-full font-medium hover:bg-peach-500 hover:text-white transition-colors">
+                        View Lookbook
+                    </a>
+                </div>
+            </div>
+            
+            <div class="md:w-1/2 relative">
+                <div class="relative">
+                    <div class="absolute -top-10 -right-10 w-64 h-64 bg-peach-300 rounded-full opacity-50"></div>
+                    <div class="absolute -bottom-10 -left-10 w-56 h-56 bg-peach-400 rounded-full opacity-30"></div>
+                    <div class="relative grid grid-cols-2 gap-4 max-w-lg mx-auto">
+                        <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-72"></div>
+                        <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-56 mt-8"></div>
+                        <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-56"></div>
+                        <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-72 mt-8"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Collections -->
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title center-title text-center">Featured Collections</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Collection 1 -->
+                <div class="card-hover bg-white rounded-xl overflow-hidden shadow-lg">
+                    <div class="h-64 bg-gradient-to-r from-cyan-100 to-blue-100 relative">
+                        <div class="absolute bottom-4 left-4 bg-white px-4 py-2 rounded-full text-sm font-medium">
+                            Spring 2023
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-display font-bold mb-2">Seoul Bloom</h3>
+                        <p class="text-gray-600 mb-4">
+                            Pastel florals and lightweight fabrics inspired by cherry blossom season
+                        </p>
+                        <a href="#" class="text-peach-500 font-medium hover:text-peach-400 transition-colors">
+                            View Collection →
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Collection 2 -->
+                <div class="card-hover bg-white rounded-xl overflow-hidden shadow-lg">
+                    <div class="h-64 bg-gradient-to-r from-red-100 to-orange-100 relative">
+                        <div class="absolute bottom-4 left-4 bg-white px-4 py-2 rounded-full text-sm font-medium">
+                            Fall 2023
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-display font-bold mb-2">Hanbok Revival</h3>
+                        <p class="text-gray-600 mb-4">
+                            Modern interpretations of traditional Korean silhouettes
+                        </p>
+                        <a href="#" class="text-peach-500 font-medium hover:text-peach-400 transition-colors">
+                            View Collection →
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Collection 3 -->
+                <div class="card-hover bg-white rounded-xl overflow-hidden shadow-lg">
+                    <div class="h-64 bg-gradient-to-r from-green-100 to-teal-100 relative">
+                        <div class="absolute bottom-4 left-4 bg-white px-4 py-2 rounded-full text-sm font-medium">
+                            Summer 2024
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-display font-bold mb-2">Jeju Coastal</h3>
+                        <p class="text-gray-600 mb-4">
+                            Breathable linens and ocean-inspired hues
+                        </p>
+                        <a href="#" class="text-peach-500 font-medium hover:text-peach-400 transition-colors">
+                            View Collection →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cultural Insights -->
+    <section class="py-20 bg-peach-100">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row gap-12 items-center">
+                <div class="md:w-1/2">
+                    <h2 class="section-title">Cultural Heritage in Modern Fashion</h2>
+                    <p class="text-lg mb-6">
+                        Our designs are deeply rooted in Korean tradition, drawing inspiration from centuries-old 
+                        patterns and techniques. Each piece tells a story of cultural evolution.
+                    </p>
+                    <p class="text-lg mb-8">
+                        From the vibrant colors of Dancheong to the elegant silhouettes of Hanbok, we reinterpret 
+                        traditional elements for the contemporary wardrobe.
+                    </p>
+                    <a href="#" class="px-8 py-3 bg-peach-500 text-white rounded-full font-medium inline-block hover:bg-peach-400 transition-colors">
+                        Explore Cultural Notes
+                    </a>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-gradient-to-br from-amber-100 to-orange-100 rounded-xl h-64"></div>
+                        <div class="bg-gradient-to-br from-rose-100 to-pink-100 rounded-xl h-80 mt-8"></div>
+                        <div class="bg-gradient-to-br from-blue-100 to-cyan-100 rounded-xl h-80"></div>
+                        <div class="bg-gradient-to-br from-emerald-100 to-teal-100 rounded-xl h-64 mt-8"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Moodboards -->
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title center-title text-center">Community Moodboards</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="card-hover rounded-xl overflow-hidden shadow-lg">
+                    <div class="h-80 bg-gradient-to-br from-purple-100 to-indigo-100 relative">
+                        <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/70 to-transparent text-white">
+                            <h3 class="text-xl font-display font-bold">Spring Pastels</h3>
+                            <p>By @style_seeker</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-hover rounded-xl overflow-hidden shadow-lg">
+                    <div class="h-80 bg-gradient-to-br from-rose-100 to-pink-100 relative">
+                        <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/70 to-transparent text-white">
+                            <h3 class="text-xl font-display font-bold">Urban Hanbok</h3>
+                            <p>By @seoul_styler</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-hover rounded-xl overflow-hidden shadow-lg">
+                    <div class="h-80 bg-gradient-to-br from-amber-100 to-orange-100 relative">
+                        <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/70 to-transparent text-white">
+                            <h3 class="text-xl font-display font-bold">Minimalist Seoul</h3>
+                            <p>By @minimal_k</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-20 bg-gradient-to-r from-peach-300 to-peach-400">
+        <div class="container mx-auto px-4 max-w-3xl text-center">
+            <h2 class="text-3xl md:text-4xl font-display font-bold text-white mb-6">Join Our Style Community</h2>
+            <p class="text-xl text-white/90 mb-8">
+                Subscribe to receive updates on new collections, cultural insights, and exclusive offers.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4">
+                <input 
+                    type="email" 
+                    placeholder="Your email address" 
+                    class="flex-grow px-6 py-4 rounded-full focus:outline-none focus:ring-2 focus:ring-white"
+                >
+                <button class="px-8 py-4 bg-white text-peach-500 rounded-full font-bold hover:bg-peach-50 transition-colors">
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-charcoal-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="text-xl font-display font-bold mb-4">Dancheong Diary</h3>
+                    <p class="text-gray-400 mb-4">
+                        Korean-inspired fashion that bridges tradition and modernity. Our collections celebrate cultural heritage through contemporary design.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-pinterest text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Explore</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Collections</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Lookbooks</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Trend Reports</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Cultural Notes</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Street Style</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Customer Care</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Shipping & Returns</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Size Guide</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">FAQs</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contact</h3>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
+                            <span>Seoul, South Korea</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3"></i>
+                            <span>hello@dancheongdiary.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone mt-1 mr-3"></i>
+                            <span>+82 2 1234 5678</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-800 text-center text-gray-500">
+                <p>&copy; 2023 Dancheong Diary. All rights reserved. | Inspired by Korean Heritage</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
