@@ -34,27 +34,6 @@
     }
   </script>
   <style type="text/tailwindcss">
-    @layer utilities {
-      .section-title {
-        @apply text-3xl md:text-4xl font-display font-bold text-charcoal-800 relative pb-4 mb-8;
-      }
-      .section-title::after {
-        content: '';
-        @apply absolute bottom-0 left-0 w-16 h-1 bg-peach-400;
-      }
-      .center-title::after {
-        @apply left-1/2 transform -translate-x-1/2;
-      }
-      .card-hover {
-        @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-xl;
-      }
-      .lookbook-filter {
-        @apply px-4 py-2 rounded-full border border-peach-300 bg-white text-charcoal-800 transition-all;
-      }
-      .lookbook-filter:hover, .lookbook-filter.active {
-        @apply bg-peach-400 text-white border-peach-400;
-      }
-    }
     
     .lookbook-item {
       transition: all 0.3s ease;
