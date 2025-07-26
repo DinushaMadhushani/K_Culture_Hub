@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Dancheong Diary</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --peach-light: #FFF0E6;
+            --peach-primary: #FFD0B5;
+            --peach-dark: #FF9A76;
+            --text-dark: #3A2E2A;
+            --text-light: #5C4A42;
+            --off-white: #FFF8F5;
+            --charcoal: #2D2A32;
+        }
+        
+        body {
+            background-color: var(--off-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--peach-dark);
+        }
+        
+        .logo span {
+            color: var(--text-dark);
+        }
+        
+        nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--peach-dark);
+        }
+        
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--peach-dark);
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--peach-light) 0%, var(--peach-primary) 100%);
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 Q50,20 100,0 L100,100 Q50,80 0,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+            opacity: 0.3;
+        }
+        
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .page-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            color: var(--text-light);
+            position: relative;
+        }
+        
+        /* Brand Story */
+        .brand-story {
+            padding: 80px 0;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .story-content {
+            flex: 1;
+        }
+        
+        .story-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .story-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background-color: var(--peach-dark);
+        }
+        
+        .story-content p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: var(--text-light);
+        }
+        
+        .story-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            height: 500px;
+            background-color: #e0e0e0; /* Placeholder color */
+        }
+        
+        /* Mission Section */
+        .mission {
+            background-color: var(--peach-light);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .mission h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .mission h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--peach-dark);
+        }
+        
+        .mission-content {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-size: 1.1rem;
+            color: var(--text-light);
+        }
+        
+        .values {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .value-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--peach-dark);
+            margin-bottom: 20px;
+        }
+        
+        .value-card h3 {
+            margin-bottom: 15px;
+        }
+        
+        .value-card p {
+            color: var(--text-light);
+        }
+        
+        /* Team Section */
+        .team {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--peach-dark);
+        }
+        
+        .team-members {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .member-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .member-image {
+            height: 300px;
+            background-color: #e0e0e0; /* Placeholder color */
+        }
+        
+        .member-info {
+            padding: 25px;
+        }
+        
+        .member-info h3 {
+            margin-bottom: 5px;
+        }
+        
+        .member-role {
+            color: var(--peach-dark);
+            margin-bottom: 15px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            color: var(--text-dark);
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--peach-dark);
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, var(--peach-light) 0%, var(--peach-primary) 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .contact h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--peach-dark);
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto 50px;
+        }
+        
+        .info-card {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .info-icon {
+            font-size: 2rem;
+            color: var(--peach-dark);
+            margin-bottom: 20px;
+        }
+        
+        .info-card h3 {
+            margin-bottom: 15px;
+        }
+        
+        .contact-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--peach-dark);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .contact-btn:hover {
+            background: var(--charcoal);
+            transform: translateY(-3px);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--peach-dark);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--peach-dark);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: background 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background: var(--peach-dark);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 900px) {
+            .brand-story {
+                flex-direction: column;
+            }
+            
+            .story-image {
+                width: 100%;
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav {
+                margin-top: 15px;
+            }
+            
+            .page-header {
+                padding: 80px 0;
+            }
+            
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Dancheong<span>Diary</span></div>
+                <nav>
+                    <a href="#">Home</a>
+                    <a href="#">Collections</a>
+                    <a href="#">Lookbook</a>
+                    <a href="#">Trends</a>
+                    <a href="#">Culture</a>
+                    <a href="#" class="active">About</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Story</h1>
+            <p>Discover the journey of Dancheong Diary and our passion for blending Korean heritage with contemporary fashion</p>
+        </div>
+    </section>
+
+    <!-- Brand Story -->
+    <section class="brand-story">
+        <div class="container">
+            <div class="story-content">
+                <h2>Where Tradition Meets Modernity</h2>
+                <p>Founded in 2018, Dancheong Diary began as a passion project by designer Min-ji Park. Growing up in Seoul surrounded by the vibrant colors of Gyeongbokgung Palace and the elegant lines of traditional Hanbok, Min-ji felt a deep connection to Korea's artistic heritage.</p>
+                <p>After studying fashion design in Paris, Min-ji returned to Seoul with a vision: to create clothing that honors traditional Korean aesthetics while embracing contemporary silhouettes. What started as a small studio in Insadong has grown into a beloved brand that celebrates Korea's rich cultural legacy through fashion.</p>
+                <p>The name "Dancheong Diary" comes from the traditional Korean decorative coloring used on wooden buildings. Just as Dancheong artists documented stories through their vibrant patterns, we record our cultural journey through each collection we create.</p>
+            </div>
+            <div class="story-image"></div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission">
+        <div class="container">
+            <h2>Our Mission & Values</h2>
+            <div class="mission-content">
+                <p>At Dancheong Diary, we believe fashion should tell a story. Our mission is to preserve Korean cultural heritage through contemporary design, creating pieces that connect wearers to centuries of artistic tradition while expressing modern individuality.</p>
+            </div>
+            
+            <div class="values">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-hands"></i>
+                    </div>
+                    <h3>Cultural Preservation</h3>
+                    <p>We research and honor traditional techniques, ensuring they remain relevant for future generations.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Sustainable Practices</h3>
+                    <p>From sourcing to production, we prioritize eco-friendly materials and ethical manufacturing.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Innovative Design</h3>
+                    <p>We reinterpret traditional elements in fresh, contemporary ways that resonate globally.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Community Connection</h3>
+                    <p>We collaborate with Korean artisans and support cultural preservation initiatives.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Creative Family</h2>
+            </div>
+            
+            <div class="team-members">
+                <div class="member-card">
+                    <div class="member-image"></div>
+                    <div class="member-info">
+                        <h3>Min-ji Park</h3>
+                        <div class="member-role">Founder & Creative Director</div>
+                        <p>Seoul-born designer blending Korean tradition with Parisian elegance.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="member-card">
+                    <div class="member-image"></div>
+                    <div class="member-info">
+                        <h3>Ji-hoon Kim</h3>
+                        <div class="member-role">Head Pattern Designer</div>
+                        <p>Master of traditional Dancheong patterns and modern textile innovation.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="member-card">
+                    <div class="member-image"></div>
+                    <div class="member-info">
+                        <h3>Yoona Lee</h3>
+                        <div class="member-role">Cultural Research Director</div>
+                        <p>Preserving and documenting Korea's fashion heritage for modern application.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="member-card">
+                    <div class="member-image"></div>
+                    <div class="member-info">
+                        <h3>Hae-won Jung</h3>
+                        <div class="member-role">Sustainability Manager</div>
+                        <p>Ensuring ethical practices and eco-friendly materials throughout our process.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <h2>Connect With Us</h2>
+            
+            <div class="contact-info">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Visit Our Studio</h3>
+                    <p>37 Insadong-gil<br>Jongno-gu, Seoul<br>South Korea 03144</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email Us</h3>
+                    <p>hello@dancheongdiary.com<br>press@dancheongdiary.com<br>collaborate@dancheongdiary.com</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Call Us</h3>
+                    <p>+82 2 1234 5678<br>Monday-Friday: 9AM-6PM KST<br>Saturday: 10AM-4PM KST</p>
+                </div>
+            </div>
+            
+            <a href="#" class="contact-btn">Send a Message</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>Dancheong Diary</h3>
+                    <p>Korean-inspired fashion that bridges tradition and modernity. Our collections celebrate cultural heritage through contemporary design.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Explore</h3>
+                    <ul>
+                        <li><a href="#">Collections</a></li>
+                        <li><a href="#">Lookbooks</a></li>
+                        <li><a href="#">Trend Reports</a></li>
+                        <li><a href="#">Cultural Notes</a></li>
+                        <li><a href="#">Street Style</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Customer Care</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Information</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Collaborations</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Dancheong Diary. All rights reserved. | Inspired by Korean Heritage</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

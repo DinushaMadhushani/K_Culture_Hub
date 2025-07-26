@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Korean Fashion Culture | Dancheong Diary</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --peach-light: #FFF0E6;
+            --peach-primary: #FFD0B5;
+            --peach-dark: #FF9A76;
+            --text-dark: #3A2E2A;
+            --text-light: #5C4A42;
+            --off-white: #FFF8F5;
+            --charcoal: #2D2A32;
+        }
+        
+        body {
+            background-color: var(--off-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--peach-dark);
+        }
+        
+        .logo span {
+            color: var(--text-dark);
+        }
+        
+        nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--peach-dark);
+        }
+        
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--peach-dark);
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--peach-light) 0%, var(--peach-primary) 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        .page-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: var(--text-light);
+        }
+        
+        /* Culture Intro */
+        .culture-intro {
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .culture-intro h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .culture-intro h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--peach-dark);
+        }
+        
+        .culture-intro p {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+        
+        /* Cultural Insights */
+        .insights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 30px 0 60px;
+        }
+        
+        .insight-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .insight-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .insight-img {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .insight-content {
+            padding: 25px;
+        }
+        
+        .insight-category {
+            display: inline-block;
+            background: var(--peach-light);
+            color: var(--peach-dark);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .insight-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .insight-content p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+        
+        .author {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .author-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--peach-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            color: var(--peach-dark);
+        }
+        
+        .author-info {
+            font-size: 0.9rem;
+        }
+        
+        .author-info .name {
+            font-weight: 500;
+        }
+        
+        .author-info .date {
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+        
+        /* Traditional Elements */
+        .traditional {
+            background: var(--peach-light);
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--peach-dark);
+        }
+        
+        .elements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .element-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .element-icon {
+            font-size: 2.5rem;
+            color: var(--peach-dark);
+            margin-bottom: 20px;
+        }
+        
+        .element-card h3 {
+            margin-bottom: 15px;
+        }
+        
+        .element-card p {
+            color: var(--text-light);
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .newsletter h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 25px;
+            color: var(--text-light);
+        }
+        
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-size: 1rem;
+        }
+        
+        .newsletter-form button {
+            background: var(--peach-dark);
+            color: white;
+            border: none;
+            padding: 0 25px;
+            border-radius: 0 30px 30px 0;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .newsletter-form button:hover {
+            background: var(--charcoal);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .footer-col {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--peach-dark);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--peach-dark);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: background 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background: var(--peach-dark);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav {
+                margin-top: 15px;
+            }
+            
+            .page-header {
+                padding: 60px 0;
+            }
+            
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .newsletter-form input,
+            .newsletter-form button {
+                width: 100%;
+                border-radius: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Dancheong<span>Diary</span></div>
+                <nav>
+                    <a href="#">Home</a>
+                    <a href="#">Collections</a>
+                    <a href="#">Lookbook</a>
+                    <a href="#">Trends</a>
+                    <a href="#" class="active">Culture</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Korean Fashion Heritage</h1>
+            <p>Discover the rich cultural traditions that inspire contemporary Korean fashion design</p>
+        </div>
+    </section>
+
+    <!-- Culture Intro -->
+    <section class="culture-intro">
+        <div class="container">
+            <h2>Roots of Korean Fashion</h2>
+            <p>Korean fashion draws from centuries of cultural heritage, blending traditional aesthetics with modern sensibilities. From the vibrant colors of Dancheong to the elegant silhouettes of Hanbok, each element tells a story of Korea's rich history and artistic traditions.</p>
+        </div>
+    </section>
+
+    <!-- Cultural Insights -->
+    <section class="container">
+        <div class="insights">
+            <!-- Insight 1 -->
+            <div class="insight-card">
+                <div class="insight-img" style="background-image: url('https://images.unsplash.com/photo-1603575448878-868a20723f5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
+                <div class="insight-content">
+                    <span class="insight-category">Hanbok</span>
+                    <h3>The Evolution of Hanbok</h3>
+                    <p>Explore how traditional Korean clothing has transformed from Joseon dynasty court attire to modern streetwear inspiration.</p>
+                    <div class="author">
+                        <div class="author-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <div class="name">Ji-hyun Park</div>
+                            <div class="date">May 15, 2023</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Insight 2 -->
+            <div class="insight-card">
+                <div class="insight-img" style="background-image: url('https://images.unsplash.com/photo-1614928228253-dc09cbc3b11c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
+                <div class="insight-content">
+                    <span class="insight-category">Patterns</span>
+                    <h3>Dancheong: Colors of Tradition</h3>
+                    <p>Discover the meaning behind the vibrant colors and patterns used in Korean temple art and how they influence modern design.</p>
+                    <div class="author">
+                        <div class="author-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <div class="name">Min-jun Kim</div>
+                            <div class="date">April 28, 2023</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Insight 3 -->
+            <div class="insight-card">
+                <div class="insight-img" style="background-image: url('https://images.unsplash.com/photo-1615880484746-a134be9a6ecf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
+                <div class="insight-content">
+                    <span class="insight-category">Modern</span>
+                    <h3>Hallyu: The Korean Wave</h3>
+                    <p>How K-pop and Korean dramas have transformed traditional aesthetics into global fashion trends.</p>
+                    <div class="author">
+                        <div class="author-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <div class="name">Soo-ah Lee</div>
+                            <div class="date">June 3, 2023</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Traditional Elements -->
+    <section class="traditional">
+        <div class="container">
+            <div class="section-title">
+                <h2>Traditional Elements in Modern Fashion</h2>
+            </div>
+            
+            <div class="elements">
+                <div class="element-card">
+                    <div class="element-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Color Symbolism</h3>
+                    <p>Traditional Korean color meanings translated into contemporary palettes</p>
+                </div>
+                
+                <div class="element-card">
+                    <div class="element-icon">
+                        <i class="fas fa-draw-polygon"></i>
+                    </div>
+                    <h3>Dancheong Patterns</h3>
+                    <p>Ancient temple patterns reimagined in modern textiles</p>
+                </div>
+                
+                <div class="element-card">
+                    <div class="element-icon">
+                        <i class="fas fa-vest"></i>
+                    </div>
+                    <h3>Hanbok Silhouettes</h3>
+                    <p>Traditional garment shapes adapted for contemporary wear</p>
+                </div>
+                
+                <div class="element-card">
+                    <div class="element-icon">
+                        <i class="fas fa-knot"></i>
+                    </div>
+                    <h3>Norigae Accessories</h3>
+                    <p>Traditional pendants transformed into modern jewelry</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cultural Quote -->
+    <section class="culture-intro">
+        <div class="container">
+            <blockquote style="font-style: italic; font-size: 1.4rem; max-width: 800px; margin: 0 auto; text-align: center; padding: 30px 0;">
+                "Fashion is not just about clothes. It's about carrying forward our heritage, telling stories through fabric and form, and connecting generations through design."
+            </blockquote>
+            <p style="text-align: center; margin-top: 15px; font-weight: 500;">- Lee Young-hee, Master Hanbok Designer</p>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Explore Korean Fashion Heritage</h2>
+            <p>Subscribe to receive cultural insights and updates on our latest collections</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address">
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>Dancheong Diary</h3>
+                    <p>Korean-inspired fashion that bridges tradition and modernity. Our collections celebrate cultural heritage through contemporary design.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Explore</h3>
+                    <ul>
+                        <li><a href="#">Collections</a></li>
+                        <li><a href="#">Lookbooks</a></li>
+                        <li><a href="#">Trend Reports</a></li>
+                        <li><a href="#">Cultural Notes</a></li>
+                        <li><a href="#">Street Style</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Customer Care</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Seoul, South Korea</li>
+                        <li><i class="fas fa-envelope"></i> hello@dancheongdiary.com</li>
+                        <li><i class="fas fa-phone"></i> +82 2 1234 5678</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Dancheong Diary. All rights reserved. | Inspired by Korean Heritage</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
