@@ -34,7 +34,6 @@
     }
   </script>
   <style type="text/tailwindcss">
-    
     /* Slideshow Styles */
     .slide {
       position: absolute;
@@ -52,8 +51,81 @@
       z-index: 1;
     }
     
+    /* Collection Card Styles */
+    .collection-card {
+      position: relative;
+      height: 400px;
+      overflow: hidden;
+    }
     
+    .collection-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
     
+    .collection-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease;
+    }
+    
+    .season-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background-color: rgba(255,125,85,0.9);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+    
+    .card-hover:hover .collection-overlay {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .card-hover:hover .collection-image {
+      transform: scale(1.05);
+    }
+    
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background-color: #FF7D55;
+    }
+    
+    .center-title {
+      display: block;
+      text-align: center;
+    }
+    
+    .center-title::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
   </style>
 </head>
 <body class="bg-peach-50 font-sans text-charcoal-800">
@@ -127,7 +199,7 @@
         <!-- Collection 1 -->
         <div class="card-hover bg-white rounded-xl overflow-hidden shadow-lg">
           <div class="collection-card">
-            <img src="./assets/images/spring.jpg" 
+            <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1036&q=80" 
                  alt="Seoul Bloom Collection" class="collection-image">
             <div class="collection-overlay">
               <h3 class="text-2xl font-display font-bold text-white mb-2">Seoul Bloom</h3>
@@ -237,17 +309,18 @@
             From the vibrant colors of Dancheong to the elegant silhouettes of Hanbok, we reinterpret
             traditional elements for the contemporary wardrobe.
           </p>
-          <a href="/assets/images/img.webp" class="px-8 py-3 bg-peach-500 text-white rounded-full font-medium inline-block hover:bg-peach-400 transition-colors">
+          <a href="./pages/culture.html" class="px-8 py-3 bg-peach-500 text-white rounded-full font-medium inline-block hover:bg-peach-400 transition-colors">
             Explore Cultural Notes
           </a>
         </div>
-        <div class="md:w-1/2">
-          <div class="grid grid-cols-2 gap-4">
-            <div class="bg-gradient-to-br from-amber-100 to-orange-100 rounded-xl h-64"></div>
-            <div class="bg-gradient-to-br from-rose-100 to-pink-100 rounded-xl h-80 mt-8"></div>
-            <div class="bg-gradient-to-br from-blue-100 to-cyan-100 rounded-xl h-80"></div>
-            <div class="bg-gradient-to-br from-emerald-100 to-teal-100 rounded-xl h-64 mt-8"></div>
+        
+        <!-- Image added to the right side -->
+        <div class="md:w-1/2 w-full">
+          <div class="rounded-xl overflow-hidden shadow-lg">
+            <img src="./assets/images/img2.png" 
+                 alt="Traditional Korean patterns" class="w-full h-auto object-cover">
           </div>
+          
         </div>
       </div>
     </div>
@@ -320,7 +393,16 @@
             <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Street Style</a></li>
           </ul>
         </div>
-       
+        <div>
+          <h3 class="text-lg font-bold mb-4">Information</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Sustainability</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Careers</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Press</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+          </ul>
+        </div>
         <div>
           <h3 class="text-lg font-bold mb-4">Contact</h3>
           <ul class="space-y-3 text-gray-400">
