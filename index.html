@@ -4,518 +4,497 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KoreaVerse | Discover Korean Culture</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- AOS Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <!-- Swiper CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
+                        'peach-light': '#FFF5EE',
                         'peach-primary': '#FFDAB9',
                         'peach-secondary': '#FFE5B4',
-                        'peach-light-salmon': '#FFA07A',
-                        'peach-seashell': '#FFF5EE',
-                        'dark-gray': '#333333',
+                        'peach-accent': '#FFA07A',
+                        'peach-dark': '#FF8C00',
+                        'korean-red': '#CD1818',
+                        'text-dark': '#333333',
+                        'text-light': '#ffffff',
                     },
                     fontFamily: {
-                        'heading': ['Playfair Display', 'serif'],
-                        'body': ['Poppins', 'sans-serif'],
-                        'korean': ['Noto Sans KR', 'sans-serif']
+                        'playfair': ['Playfair Display', 'serif'],
+                        'poppins': ['Poppins', 'sans-serif'],
+                    },
+                    animation: {
+                        'fadeInDown': 'fadeInDown 1s ease forwards',
+                        'fadeInUp': 'fadeInUp 1s ease forwards',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeInDown: {
+                            '0%': { opacity: '0', transform: 'translateY(-30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        }
                     }
                 }
             }
         }
     </script>
-    
-    <style>
+    <style type="text/css">
         body {
             background-color: #FFF5EE;
-            scroll-behavior: smooth;
+            overflow-x: hidden;
         }
-        .hero-gradient {
-            background: linear-gradient(135deg, rgba(255,218,185,0.9) 0%, rgba(255,229,180,0.9) 100%);
-        }
-        .category-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .section-divider {
+        .logo-icon {
+            background: linear-gradient(135deg, #FF8C00, #CD1818);
             position: relative;
-            height: 150px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(255, 140, 0, 0.3);
         }
-        .section-divider::before {
+        .logo-icon::before {
             content: "";
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23FFDAB9' fill-opacity='1' d='M0,160L48,149.3C96,139,192,117,288,122.7C384,128,480,160,576,154.7C672,149,768,107,864,85.3C960,64,1056,64,1152,74.7C1248,85,1344,107,1392,117.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
-            background-size: cover;
-            background-position: center;
-            transform: scaleY(-1);
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3) 1px, transparent 2px),
+                radial-gradient(circle at 70% 70%, rgba(255,255,255,0.3) 1px, transparent 2px);
+            background-size: 20px 20px;
         }
-        .featured-article-card {
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #FF8C00, #CD1818);
+        }
+       
+        .gallery-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+        }
+        .hero {
+            background: 
+                linear-gradient(135deg, rgba(31, 18, 18, 0.9) 0%, rgba(14, 11, 7, 0.9) 100%),
+                url('https://images.unsplash.com/photo-1517154421773-0529f29ea451?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover;
+        }
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #CD1818;
+            border-radius: 2px;
+        }
+        .culture-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: #CD1818;
+            border-radius: 2px;
+        }
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #CD1818;
+            border-radius: 2px;
+        }
+        .btn-primary {
+            background: linear-gradient(to right, #FF8C00, #CD1818);
             transition: all 0.3s ease;
         }
-        .featured-article-card:hover {
+        .btn-primary:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 25px rgba(205, 24, 24, 0.4);
         }
-        .swiper-pagination-bullet-active {
-            background-color: #FF8C00 !important;
+        .btn-secondary {
+            background: white;
+            transition: all 0.3s ease;
         }
-        .mobile-menu {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease-out;
+        .btn-secondary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
-        .mobile-menu.open {
-            max-height: 500px;
-            transition: max-height 0.5s ease-in;
+        .feature-card {
+            transition: all 0.4s ease;
+            transform: translateY(20px);
+            opacity: 0;
         }
-        .korean-text {
-            font-family: 'Noto Sans KR', sans-serif;
-        }
-        
-        /* New logo styling */
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
-        .logo-image {
-            height: 50px;
-            width: auto;
-            margin-right: 12px;
-        }
-        .logo-text {
-            font-size: 1.8rem;
-            font-weight: 700;
-            font-family: 'Playfair Display', serif;
+        .feature-card.visible {
+            transform: translateY(0);
+            opacity: 1;
         }
     </style>
 </head>
-<body class="font-body text-dark-gray">
-    <!-- Navigation -->
-    <nav class="bg-white shadow-md sticky top-0 z-50">
+<body class="font-poppins text-text-dark bg-peach-light overflow-x-hidden">
+    <!-- Header -->
+    <header class="bg-white/95 shadow-md sticky top-0 z-50 backdrop-blur-sm">
+        <div class="container mx-auto px-4 py-5 flex justify-between items-center">
+            <a href="#" class="logo flex items-center no-underline animate-float">
+                <div class="logo-icon w-14 h-14 rounded-full flex items-center justify-center mr-3">
+                    <i class="fas fa-landmark text-white text-2xl relative z-10"></i>
+                </div>
+                <div class="logo-text text-korean-red text-2xl md:text-3xl font-playfair font-bold relative">
+                    Korea<span class="text-peach-dark">Verse</span>
+                </div>
+            </a>
+            <button class="mobile-menu-btn md:hidden text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="hidden md:block">
+                <ul class="flex space-x-8">
+                    <li><a href="#" class="text-lg font-medium transition-colors hover:text-korean-red relative after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-korean-red after:transition-all hover:after:w-full">Home</a></li>
+                    <li><a href="#" class="text-lg font-medium transition-colors hover:text-korean-red relative after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-korean-red after:transition-all hover:after:w-full">Culture</a></li>
+                    <li><a href="#" class="text-lg font-medium transition-colors hover:text-korean-red relative after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-korean-red after:transition-all hover:after:w-full">Food</a></li>
+                    <li><a href="#" class="text-lg font-medium transition-colors hover:text-korean-red relative after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-korean-red after:transition-all hover:after:w-full">K-Pop</a></li>
+                    <li><a href="#" class="text-lg font-medium transition-colors hover:text-korean-red relative after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-korean-red after:transition-all hover:after:w-full">Learn</a></li>
+                    <li><a href="#" class="text-lg font-medium transition-colors hover:text-korean-red relative after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-korean-red after:transition-all hover:after:w-full">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero min-h-screen flex items-center relative overflow-hidden">
+        <div class="container mx-auto px-4 py-20 text-center relative z-10">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-playfair font-bold mb-5 text-white animate-fadeInDown leading-tight">
+                Discover the <span class="text-korean-red block mt-3">Beauty of Korea</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-10 text-white animate-fadeInUp opacity-0 animation-delay-300 max-w-2xl mx-auto">
+                Journey through centuries of tradition, vibrant culture, and modern innovations
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-5 animate-fadeInUp opacity-0 animation-delay-600">
+                <a href="#" class="btn-primary px-10 py-4 rounded-full font-semibold text-lg text-white flex items-center gap-2 justify-center shadow-lg">
+                    Start Journey
+                </a>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-24 relative bg-peach-primary/20">
         <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center py-4">
-                <div class="flex items-center">
-                    <a href="#" class="logo-container">
-                        <!-- New logo SVG -->
-                        <svg class="logo-image" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                    <stop offset="0%" stop-color="#FF8C00" />
-                                    <stop offset="100%" stop-color="#CD1818" />
-                                </linearGradient>
-                                <pattern id="koreanPattern" patternUnits="userSpaceOnUse" width="20" height="20">
-                                    <path d="M0,0 L20,20 M-5,5 L5,15 M15,25 L25,35" stroke="#FF8C00" stroke-width="1" opacity="0.3"/>
-                                </pattern>
-                            </defs>
-                            
-                            <!-- Background rectangle with pattern -->
-                            <rect x="0" y="0" width="50" height="50" fill="url(#koreanPattern)" rx="10" />
-                            
-                            <!-- Korean character -->
-                            <g transform="translate(10, 10)" fill="url(#logoGradient)">
-                                <path d="M15,5 L15,35 M5,15 L25,15 M5,25 L25,25" stroke-width="3" stroke-linecap="round"/>
-                                <circle cx="15" cy="20" r="3" fill="url(#logoGradient)"/>
-                            </g>
-                            
-                            <!-- Text part -->
-                            <text x="60" y="32" font-family="'Playfair Display', serif" font-weight="700" font-size="28" fill="url(#logoGradient)">KoreaVerse</text>
-                        </svg>
+            <div class="section-title text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-playfair font-bold mb-4 relative inline-block">
+                    Korean Cultural Treasures
+                </h2>
+                <p class="text-peach-dark max-w-xl mx-auto text-lg">
+                    Discover the rich heritage that makes Korea unique
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Feature Card 1 -->
+                <div class="feature-card bg-white rounded-2xl overflow-hidden shadow-xl transition-all duration-400 border border-peach-primary/30 relative">
+                    <div class="feature-img h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1560843439-6b13df8c8a4f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Traditional Hanbok" class="w-full h-full object-cover transition-transform duration-500">
+                    </div>
+                    <div class="feature-content p-6">
+                        <div class="feature-icon w-14 h-14 rounded-full bg-peach-primary flex items-center justify-center mb-5">
+                            <i class="fas fa-archway text-korean-red text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-playfair font-bold mb-3">Traditional Hanbok</h3>
+                        <p class="text-gray-600 mb-5">
+                            The elegant traditional clothing worn for festivals and celebrations throughout Korea's history.
+                        </p>
+                        <a href="#" class="text-korean-red font-semibold flex items-center gap-2 transition-all duration-300">
+                            Explore More <i class="fas fa-arrow-right text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Feature Card 2 -->
+                <div class="feature-card bg-white rounded-2xl overflow-hidden shadow-xl transition-all duration-400 border border-peach-primary/30 relative">
+                    <div class="feature-img h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Korean Cuisine" class="w-full h-full object-cover transition-transform duration-500">
+                    </div>
+                    <div class="feature-content p-6">
+                        <div class="feature-icon w-14 h-14 rounded-full bg-peach-primary flex items-center justify-center mb-5">
+                            <i class="fas fa-utensils text-korean-red text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-playfair font-bold mb-3">Korean Cuisine</h3>
+                        <p class="text-gray-600 mb-5">
+                            From kimchi to bibimbap, discover Korea's flavorful culinary traditions and unique dishes.
+                        </p>
+                        <a href="#" class="text-korean-red font-semibold flex items-center gap-2 transition-all duration-300">
+                            Explore More <i class="fas fa-arrow-right text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Feature Card 3 -->
+                <div class="feature-card bg-white rounded-2xl overflow-hidden shadow-xl transition-all duration-400 border border-peach-primary/30 relative">
+                    <div class="feature-img h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1619983081563-430f63602d54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="K-Pop" class="w-full h-full object-cover transition-transform duration-500">
+                    </div>
+                    <div class="feature-content p-6">
+                        <div class="feature-icon w-14 h-14 rounded-full bg-peach-primary flex items-center justify-center mb-5">
+                            <i class="fas fa-music text-korean-red text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-playfair font-bold mb-3">K-Pop Revolution</h3>
+                        <p class="text-gray-600 mb-5">
+                            The global phenomenon that's taking the music world by storm with its unique style and energy.
+                        </p>
+                        <a href="#" class="text-korean-red font-semibold flex items-center gap-2 transition-all duration-300">
+                            Explore More <i class="fas fa-arrow-right text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Feature Card 4 -->
+                <div class="feature-card bg-white rounded-2xl overflow-hidden shadow-xl transition-all duration-400 border border-peach-primary/30 relative">
+                    <div class="feature-img h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1619983081593-e2ba5b543168?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Hangul Language" class="w-full h-full object-cover transition-transform duration-500">
+                    </div>
+                    <div class="feature-content p-6">
+                        <div class="feature-icon w-14 h-14 rounded-full bg-peach-primary flex items-center justify-center mb-5">
+                            <i class="fas fa-language text-korean-red text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-playfair font-bold mb-3">Hangul Language</h3>
+                        <p class="text-gray-600 mb-5">
+                            Learn about the scientifically designed Korean writing system created by King Sejong the Great.
+                        </p>
+                        <a href="#" class="text-korean-red font-semibold flex items-center gap-2 transition-all duration-300">
+                            Explore More <i class="fas fa-arrow-right text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Culture Section -->
+    <section class="py-24 bg-peach-secondary relative">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="flex-1 min-w-[300px]">
+                    <h2 class="text-3xl md:text-4xl font-playfair font-bold mb-6 relative">
+                        Experience Korean Traditions
+                    </h2>
+                    <p class="mb-6 text-lg leading-relaxed">
+                        Korean culture is a beautiful blend of ancient traditions and cutting-edge modernity. From serene Buddhist temples to the vibrant streets of Seoul, Korea offers a unique cultural experience that captivates visitors from around the world.
+                    </p>
+                    
+                    <div class="my-10">
+                        <!-- Point 1 -->
+                        <div class="flex items-start mb-6">
+                            <div class="w-9 h-9 rounded-full bg-korean-red text-white flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-playfair font-bold text-korean-red mb-2">Rich History</h3>
+                                <p>Over 5,000 years of history with well-preserved traditions and cultural heritage.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Point 2 -->
+                        <div class="flex items-start mb-6">
+                            <div class="w-9 h-9 rounded-full bg-korean-red text-white flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-playfair font-bold text-korean-red mb-2">Vibrant Festivals</h3>
+                                <p>Colorful celebrations like Chuseok and Seollal that bring communities together.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Point 3 -->
+                        <div class="flex items-start mb-6">
+                            <div class="w-9 h-9 rounded-full bg-korean-red text-white flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-playfair font-bold text-korean-red mb-2">Global Influence</h3>
+                                <p>Hallyu Wave - Korea's cultural impact worldwide through music, film, and cuisine.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="btn-primary px-10 py-4 rounded-full font-semibold text-lg text-white inline-flex items-center gap-2 shadow-lg">
+                        Discover Traditions
                     </a>
                 </div>
                 
-                <!-- Desktop Navigation -->
-                <div class="hidden md:flex space-x-8">
-                    <a href="#" class="text-peach-dark-orange font-semibold border-b-2 border-peach-dark-orange">Home</a>
-                    <a href="#" class="hover:text-peach-dark-orange transition">Culture</a>
-                    <a href="#" class="hover:text-peach-dark-orange transition">Food</a>
-                    <a href="#" class="hover:text-peach-dark-orange transition">K-Pop</a>
-                    <a href="#" class="hover:text-peach-dark-orange transition">Learn</a>
-                    <a href="#" class="hover:text-peach-dark-orange transition">About</a>
+                <div class="flex-1 min-w-[300px] rounded-2xl overflow-hidden shadow-2xl transition-all duration-500">
+                    <img src="https://images.unsplash.com/photo-1542640244-7e112d73779a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Korean Temple" class="w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="py-24 bg-peach-light">
+        <div class="container mx-auto px-4">
+            <div class="section-title text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-playfair font-bold mb-4 relative inline-block">
+                    Korean Beauty in Pictures
+                </h2>
+                <p class="text-peach-dark max-w-xl mx-auto text-lg">
+                    Explore the visual splendor of Korea's landscapes and culture
+                </p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Gallery Item 1 -->
+                <div class="rounded-xl overflow-hidden h-80 relative shadow-lg transition-transform duration-300 hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1593696140826-c58b021acf8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Seoul Skyline" class="w-full h-full object-cover transition-transform duration-500">
+                    <div class="gallery-overlay absolute bottom-0 left-0 w-full p-6 opacity-0 transition-opacity duration-300">
+                        <h3 class="text-white text-xl font-playfair">Seoul Skyline</h3>
+                    </div>
                 </div>
                 
-                <!-- Mobile menu button -->
-                <button id="mobile-menu-button" class="md:hidden text-gray-700">
-                    <i class="fas fa-bars text-xl"></i>
-                </button>
-            </div>
-            
-            <!-- Mobile Navigation -->
-            <div id="mobile-menu" class="mobile-menu md:hidden">
-                <div class="flex flex-col py-4 space-y-3">
-                    <a href="#" class="py-2 text-peach-dark-orange font-semibold">Home</a>
-                    <a href="#" class="py-2 hover:text-peach-dark-orange transition">Culture</a>
-                    <a href="#" class="py-2 hover:text-peach-dark-orange transition">Food</a>
-                    <a href="#" class="py-2 hover:text-peach-dark-orange transition">K-Pop</a>
-                    <a href="#" class="py-2 hover:text-peach-dark-orange transition">Learn</a>
-                    <a href="#" class="py-2 hover:text-peach-dark-orange transition">About</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero-gradient py-20 md:py-32 relative overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white/10 to-transparent"></div>
-            <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-peach-primary to-transparent"></div>
-        </div>
-        
-        <div class="container mx-auto px-4 relative z-10 text-center">
-            <h1 class="text-4xl md:text-6xl font-heading font-bold mb-6 text-white" data-aos="fade-down">
-                Discover Korea's <span class="text-peach-dark-orange">Soul</span>
-            </h1>
-            <p class="text-xl md:text-2xl mb-8 text-white max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
-                Journey through 5,000 years of tradition and modernity
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4" data-aos="fade-up" data-aos-delay="400">
-                <button class="bg-peach-dark-orange hover:bg-orange-800 text-white px-8 py-3 rounded-full text-lg font-semibold transition transform hover:scale-105">
-                    Explore Culture
-                </button>
-               
-            </div>
-        </div>
-    </section>
-
-    <!-- Image Slider -->
-    <section class="py-16 bg-peach-seashell">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4" data-aos="fade-up">Korean Landscapes</h2>
-                <p class="text-lg max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
-                    Explore the breathtaking beauty of Korea's diverse landscapes
-                </p>
-            </div>
-            
-            <!-- Swiper Slider -->
-            <div class="swiper mySwiper rounded-xl shadow-xl" data-aos="fade-in">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="h-96 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1593696140826-c58b021acf8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')"></div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="h-96 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1596422846543-75c6fc197f07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1446&q=80')"></div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="h-96 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1506816561089-5cc37b02698b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')"></div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="h-96 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1542640244-7e112d73779a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')"></div>
+                <!-- Gallery Item 2 -->
+                <div class="rounded-xl overflow-hidden h-80 relative shadow-lg transition-transform duration-300 hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1446&q=80" alt="Traditional Cuisine" class="w-full h-full object-cover transition-transform duration-500">
+                    <div class="gallery-overlay absolute bottom-0 left-0 w-full p-6 opacity-0 transition-opacity duration-300">
+                        <h3 class="text-white text-xl font-playfair">Traditional Cuisine</h3>
                     </div>
                 </div>
-                <div class="swiper-button-next text-peach-dark-orange"></div>
-                <div class="swiper-button-prev text-peach-dark-orange"></div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Category Grid -->
-    <section class="py-16 bg-white relative">
-        <div class="section-divider"></div>
-        <div class="container mx-auto px-4 -mt-32 relative z-10">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4" data-aos="fade-up">Explore Korean Culture</h2>
-                <p class="text-lg max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
-                    Discover the many facets of Korea's rich heritage
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Culture Card -->
-                <div class="category-card bg-peach-seashell rounded-xl shadow-lg overflow-hidden transition-all duration-300" data-aos="flip-left">
-                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1560843439-6b13df8c8a4f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
-                    <div class="p-6 text-center">
-                        <div class="w-16 h-16 rounded-full bg-peach-dark-orange text-white flex items-center justify-center mb-4 mx-auto">
-                            <i class="fas fa-landmark text-2xl"></i>
-                        </div>
-                        <h3 class="text-xl font-heading font-bold mb-2">Culture & Heritage</h3>
-                        <p class="mb-4">Explore Korea's rich traditions and historical landmarks</p>
-                        <a href="#" class="text-peach-dark-orange font-semibold flex items-center justify-center">
-                            Discover <i class="fas fa-arrow-right ml-2 text-sm"></i>
-                        </a>
+                
+                <!-- Gallery Item 3 -->
+                <div class="rounded-xl overflow-hidden h-80 relative shadow-lg transition-transform duration-300 hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1506816561089-5cc37b02698b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Ancient Temple" class="w-full h-full object-cover transition-transform duration-500">
+                    <div class="gallery-overlay absolute bottom-0 left-0 w-full p-6 opacity-0 transition-opacity duration-300">
+                        <h3 class="text-white text-xl font-playfair">Ancient Temple</h3>
                     </div>
                 </div>
-
-                <!-- Food Card -->
-                <div class="category-card bg-peach-seashell rounded-xl shadow-lg overflow-hidden transition-all duration-300" data-aos="flip-left" data-aos-delay="100">
-                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
-                    <div class="p-6 text-center">
-                        <div class="w-16 h-16 rounded-full bg-peach-dark-orange text-white flex items-center justify-center mb-4 mx-auto">
-                            <i class="fas fa-utensils text-2xl"></i>
-                        </div>
-                        <h3 class="text-xl font-heading font-bold mb-2">Korean Cuisine</h3>
-                        <p class="mb-4">Savor the flavors of authentic Korean dishes</p>
-                        <a href="#" class="text-peach-dark-orange font-semibold flex items-center justify-center">
-                            Taste Now <i class="fas fa-arrow-right ml-2 text-sm"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- K-Pop Card -->
-                <div class="category-card bg-peach-seashell rounded-xl shadow-lg overflow-hidden transition-all duration-300" data-aos="flip-left" data-aos-delay="200">
-                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1619983081563-430f63602d54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
-                    <div class="p-6 text-center">
-                        <div class="w-16 h-16 rounded-full bg-peach-dark-orange text-white flex items-center justify-center mb-4 mx-auto">
-                            <i class="fas fa-music text-2xl"></i>
-                        </div>
-                        <h3 class="text-xl font-heading font-bold mb-2">K-Pop & Entertainment</h3>
-                        <p class="mb-4">Dive into the world of Korean pop culture</p>
-                        <a href="#" class="text-peach-dark-orange font-semibold flex items-center justify-center">
-                            Explore <i class="fas fa-arrow-right ml-2 text-sm"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Learn Card -->
-                <div class="category-card bg-peach-seashell rounded-xl shadow-lg overflow-hidden transition-all duration-300" data-aos="flip-left" data-aos-delay="300">
-                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1619983081593-e2ba5b543168?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
-                    <div class="p-6 text-center">
-                        <div class="w-16 h-16 rounded-full bg-peach-dark-orange text-white flex items-center justify-center mb-4 mx-auto">
-                            <i class="fas fa-book text-2xl"></i>
-                        </div>
-                        <h3 class="text-xl font-heading font-bold mb-2">Learn Korean</h3>
-                        <p class="mb-4">Master Hangul and essential Korean phrases</p>
-                        <a href="#" class="text-peach-dark-orange font-semibold flex items-center justify-center">
-                            Start Learning <i class="fas fa-arrow-right ml-2 text-sm"></i>
-                        </a>
+                
+                <!-- Gallery Item 4 -->
+                <div class="rounded-xl overflow-hidden h-80 relative shadow-lg transition-transform duration-300 hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1519735777090-ec97162dc266?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80" alt="Traditional Hanbok" class="w-full h-full object-cover transition-transform duration-500">
+                    <div class="gallery-overlay absolute bottom-0 left-0 w-full p-6 opacity-0 transition-opacity duration-300">
+                        <h3 class="text-white text-xl font-playfair">Traditional Hanbok</h3>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Featured Articles -->
-    <section class="py-16 bg-peach-primary">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4" data-aos="fade-up">Featured Articles</h2>
-                <p class="text-lg max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
-                    Insights and stories about Korean culture
-                </p>
-            </div>
-            
-            <!-- Articles Swiper -->
-            <div class="swiper articleSwiper" data-aos="fade-in">
-                <div class="swiper-wrapper">
-                    <!-- Article 1 -->
-                    <div class="swiper-slide">
-                        <div class="featured-article-card bg-white rounded-xl shadow-lg overflow-hidden h-full">
-                            <div class="h-56 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1542640244-7e112d73779a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
-                            <div class="p-6">
-                                <div class="flex items-center text-sm text-peach-light-salmon mb-3">
-                                    <i class="fas fa-calendar mr-2"></i>
-                                    <span>October 15, 2023</span>
-                                </div>
-                                <h3 class="text-xl font-heading font-bold mb-3">The Art of Hanbok</h3>
-                                <p class="mb-4">Exploring the history and significance of Korea's traditional clothing that has evolved over centuries.</p>
-                                <a href="#" class="text-peach-dark-orange font-semibold flex items-center">
-                                    Read More <i class="fas fa-arrow-right ml-2 text-sm"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Article 2 -->
-                    <div class="swiper-slide">
-                        <div class="featured-article-card bg-white rounded-xl shadow-lg overflow-hidden h-full">
-                            <div class="h-56 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1565333299109-84a7b5d5c20f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80');"></div>
-                            <div class="p-6">
-                                <div class="flex items-center text-sm text-peach-light-salmon mb-3">
-                                    <i class="fas fa-calendar mr-2"></i>
-                                    <span>October 5, 2023</span>
-                                </div>
-                                <h3 class="text-xl font-heading font-bold mb-3">Kimchi: Korea's Soul Food</h3>
-                                <p class="mb-4">Discover the fermentation process and cultural significance of Korea's most iconic dish.</p>
-                                <a href="#" class="text-peach-dark-orange font-semibold flex items-center">
-                                    Read More <i class="fas fa-arrow-right ml-2 text-sm"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Article 3 -->
-                    <div class="swiper-slide">
-                        <div class="featured-article-card bg-white rounded-xl shadow-lg overflow-hidden h-full">
-                            <div class="h-56 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1619983081563-430f63602d54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
-                            <div class="p-6">
-                                <div class="flex items-center text-sm text-peach-light-salmon mb-3">
-                                    <i class="fas fa-calendar mr-2"></i>
-                                    <span>September 28, 2023</span>
-                                </div>
-                                <h3 class="text-xl font-heading font-bold mb-3">K-Pop Global Domination</h3>
-                                <p class="mb-4">How Korean pop music became a worldwide phenomenon and cultural export.</p>
-                                <a href="#" class="text-peach-dark-orange font-semibold flex items-center">
-                                    Read More <i class="fas fa-arrow-right ml-2 text-sm"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Article 4 -->
-                    <div class="swiper-slide">
-                        <div class="featured-article-card bg-white rounded-xl shadow-lg overflow-hidden h-full">
-                            <div class="h-56 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1619983081593-e2ba5b543168?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
-                            <div class="p-6">
-                                <div class="flex items-center text-sm text-peach-light-salmon mb-3">
-                                    <i class="fas fa-calendar mr-2"></i>
-                                    <span>September 20, 2023</span>
-                                </div>
-                                <h3 class="text-xl font-heading font-bold mb-3">Mastering Hangul in 30 Days</h3>
-                                <p class="mb-4">A beginner's guide to learning the Korean alphabet and pronunciation basics.</p>
-                                <a href="#" class="text-peach-dark-orange font-semibold flex items-center">
-                                    Read More <i class="fas fa-arrow-right ml-2 text-sm"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-pagination mt-8"></div>
-            </div>
-        </div>
-    </section>
-
-    
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white pt-16 pb-8">
+    <footer class="bg-text-dark text-white pt-20 pb-10">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
+                <!-- Column 1 -->
                 <div>
-                    <h3 class="text-xl font-heading font-bold mb-4">KoreaVerse</h3>
-                    <p class="mb-4 opacity-75">Discover the beauty and depth of Korean heritage through our curated content and resources.</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-white hover:text-peach-light-salmon transition"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-white hover:text-peach-light-salmon transition"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-white hover:text-peach-light-salmon transition"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-white hover:text-peach-light-salmon transition"><i class="fab fa-youtube"></i></a>
+                    <h3 class="text-xl font-playfair font-bold mb-6 relative pb-3">KoreaVerse</h3>
+                    <p class="text-gray-400 mb-6">
+                        Discover the beauty and depth of Korean heritage through our curated content and resources.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center transition-all hover:bg-korean-red hover:-translate-y-1">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center transition-all hover:bg-korean-red hover:-translate-y-1">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center transition-all hover:bg-korean-red hover:-translate-y-1">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center transition-all hover:bg-korean-red hover:-translate-y-1">
+                            <i class="fab fa-youtube"></i>
+                        </a>
                     </div>
                 </div>
                 
+                <!-- Column 2 -->
                 <div>
-                    <h4 class="text-lg font-semibold mb-4">Explore</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="opacity-75 hover:opacity-100 hover:text-peach-light-salmon transition">Traditional Culture</a></li>
-                        <li><a href="#" class="opacity-75 hover:opacity-100 hover:text-peach-light-salmon transition">Korean Cuisine</a></li>
-                        <li><a href="#" class="opacity-75 hover:opacity-100 hover:text-peach-light-salmon transition">K-Pop & Entertainment</a></li>
-                        <li><a href="#" class="opacity-75 hover:opacity-100 hover:text-peach-light-salmon transition">Language Learning</a></li>
-                        <li><a href="#" class="opacity-75 hover:opacity-100 hover:text-peach-light-salmon transition">Travel Guides</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Resources</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="opacity-75 hover:opacity-100 hover:text-peach-light-salmon transition">Blog</a></li>
-                        <li><a href="#" class="opacity-75 hover:opacity-100 hover:text-peach-light-salmon transition">Recipes</a></li>
-                        <li><a href="#" class="opacity-75 hover:opacity-100 hover:text-peach-light-salmon transition">Cultural Events</a></li>
-                        <li><a href="#" class="opacity-75 hover:opacity-100 hover:text-peach-light-salmon transition">Learning Materials</a></li>
-                        <li><a href="#" class="opacity-75 hover:opacity-100 hover:text-peach-light-salmon transition">Photo Gallery</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+                    <h3 class="text-xl font-playfair font-bold mb-6 relative pb-3">Explore</h3>
                     <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Traditional Culture</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Korean Cuisine</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> K-Pop & Entertainment</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Language Learning</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Travel Guides</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 3 -->
+                <div>
+                    <h3 class="text-xl font-playfair font-bold mb-6 relative pb-3">Resources</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Recipes</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Cultural Events</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Learning Materials</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Photo Gallery</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 4 -->
+                <div>
+                    <h3 class="text-xl font-playfair font-bold mb-6 relative pb-3">Contact Us</h3>
+                    <ul class="space-y-4">
                         <li class="flex items-start">
-                            <i class="fas fa-envelope mt-1 mr-3 text-peach-light-salmon"></i>
-                            <span>contact@koreaverse.com</span>
+                            <i class="fas fa-envelope text-peach-accent mt-1 mr-3"></i>
+                            <span class="text-gray-400">contact@koreaverse.com</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-phone mt-1 mr-3 text-peach-light-salmon"></i>
-                            <span>+82 2 123 4567</span>
+                            <i class="fas fa-phone text-peach-accent mt-1 mr-3"></i>
+                            <span class="text-gray-400">+82 2 123 4567</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-peach-light-salmon"></i>
-                            <span>Seoul, South Korea</span>
+                            <i class="fas fa-map-marker-alt text-peach-accent mt-1 mr-3"></i>
+                            <span class="text-gray-400">Seoul, South Korea</span>
                         </li>
                     </ul>
                 </div>
             </div>
             
-            <div class="pt-8 border-t border-gray-700 text-center">
+            <div class="pt-8 border-t border-gray-700 text-center text-gray-500">
                 <p>&copy; 2025 KoreaVerse. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 800,
-            once: true
-        });
-
         // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('nav');
         
-        mobileMenuButton.addEventListener('click', function() {
-            mobileMenu.classList.toggle('open');
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('hidden');
+            navMenu.classList.toggle('block');
         });
         
-        // Close menu when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!mobileMenu.contains(event.target) && 
-                !mobileMenuButton.contains(event.target) && 
-                mobileMenu.classList.contains('open')) {
-                mobileMenu.classList.remove('open');
-            }
+        // Card animation on scroll
+        const featureCards = document.querySelectorAll('.feature-card');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
         });
         
-        // Initialize Swiper sliders
-        const swiper = new Swiper(".mySwiper", {
-            loop: true,
-            spaceBetween: 30,
-            effect: "fade",
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
+        featureCards.forEach(card => {
+            observer.observe(card);
         });
         
-        const articleSwiper = new Swiper(".articleSwiper", {
-            slidesPerView: 1,
-            spaceBetween: 20,
-            loop: true,
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-            breakpoints: {
-                640: {
-                    slidesPerView: 2,
-                },
-                1024: {
-                    slidesPerView: 3,
-                },
-            },
-        });
+       
     </script>
 </body>
 </html>
