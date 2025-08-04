@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K-Pop | KoreaVerse</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'peach-light': '#FFF5EE',
+                        'peach-primary': '#FFDAB9',
+                        'peach-secondary': '#FFE5B4',
+                        'peach-accent': '#FFA07A',
+                        'peach-dark': '#FF8C00',
+                        'korean-red': '#CD1818',
+                        'kpop-pink': '#FF2D78',
+                        'text-dark': '#333333',
+                        'text-light': '#ffffff',
+                    },
+                    fontFamily: {
+                        'playfair': ['Playfair Display', 'serif'],
+                        'poppins': ['Poppins', 'sans-serif'],
+                    },
+                    animation: {
+                        'fadeInDown': 'fadeInDown 0.8s ease forwards',
+                        'fadeInUp': 'fadeInUp 0.8s ease forwards',
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+                    },
+                    keyframes: {
+                        fadeInDown: {
+                            '0%': { opacity: '0', transform: 'translateY(-30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/css">
+        body {
+            background-color: #FFF5EE;
+            overflow-x: hidden;
+            font-family: 'Poppins', sans-serif;
+        }
+        .logo-icon {
+            background: linear-gradient(135deg, #FF8C00, #CD1818);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(255, 140, 0, 0.3);
+        }
+        .logo-icon::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3) 1px, transparent 2px),
+                radial-gradient(circle at 70% 70%, rgba(255,255,255,0.3) 1px, transparent 2px);
+            background-size: 20px 20px;
+        }
+        .gallery-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+        }
+        .kpop-hero {
+            background: 
+                linear-gradient(135deg, rgba(0, 0, 0, 0.85) 0%, rgba(20, 0, 30, 0.85) 100%),
+                url('https://images.unsplash.com/photo-1511376777868-611b54f68947?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover;
+        }
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #CD1818;
+            border-radius: 2px;
+        }
+        .group-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #CD1818, #FF2D78);
+        }
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #CD1818;
+            border-radius: 2px;
+        }
+        .btn-kpop {
+            background: linear-gradient(to right, #CD1818, #FF2D78);
+            transition: all 0.3s ease;
+        }
+        .btn-kpop:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 45, 120, 0.4);
+        }
+        .group-card {
+            transition: all 0.4s ease;
+            transform: translateY(20px);
+            opacity: 0;
+        }
+        .group-card.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .song-item {
+            transition: all 0.3s ease;
+        }
+        .song-item:hover {
+            transform: translateY(-5px);
+            background: linear-gradient(to right, #FFF5EE, #FFE5B4);
+        }
+        .concert-card {
+            transition: all 0.4s ease;
+        }
+        .concert-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        .news-card {
+            transition: all 0.3s ease;
+        }
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        .gallery-item {
+            transition: all 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.05);
+            z-index: 10;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #CD1818;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+        .nav-link.active {
+            color: #CD1818;
+            font-weight: 600;
+        }
+        .music-player {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="font-poppins text-text-dark bg-peach-light overflow-x-hidden">
+    <!-- Header -->
+    <header class="bg-white/95 shadow-md sticky top-0 z-50 backdrop-blur-sm">
+        <div class="container mx-auto px-4 py-5 flex justify-between items-center">
+            <a href="index.html" class="logo flex items-center no-underline">
+                <div class="logo-icon w-14 h-14 rounded-full flex items-center justify-center mr-3">
+                    <i class="fas fa-music text-white text-2xl relative z-10"></i>
+                </div>
+                <div class="logo-text text-korean-red text-2xl md:text-3xl font-playfair font-bold relative">
+                    Korea<span class="text-peach-dark">Verse</span>
+                </div>
+            </a>
+            <button class="mobile-menu-btn md:hidden text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="hidden md:block">
+                <ul class="flex space-x-8">
+                    <li><a href="index.html" class="nav-link text-lg font-medium">Home</a></li>
+                    <li><a href="culture.html" class="nav-link text-lg font-medium">Culture</a></li>
+                    <li><a href="food.html" class="nav-link text-lg font-medium">Food</a></li>
+                    <li><a href="kpop.html" class="nav-link text-lg font-medium active">K-Pop</a></li>
+                    <li><a href="#" class="nav-link text-lg font-medium">Learn</a></li>
+                    <li><a href="#" class="nav-link text-lg font-medium">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="kpop-hero min-h-[70vh] flex items-center relative overflow-hidden">
+        <div class="container mx-auto px-4 py-20 text-center relative z-10">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-playfair font-bold mb-5 text-white animate-fadeInDown leading-tight">
+                Experience the <span class="text-kpop-pink block mt-3">K-Pop Revolution</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-10 text-white animate-fadeInUp opacity-0 max-w-2xl mx-auto">
+                Dive into the vibrant world of Korean pop music that's taking the globe by storm
+            </p>
+            <div class="animate-fadeInUp opacity-0 animation-delay-300">
+                <a href="#" class="btn-kpop px-10 py-4 rounded-full font-semibold text-lg text-white inline-flex items-center gap-2 shadow-lg">
+                    <i class="fas fa-play"></i> Explore K-Pop
+                </a>
+            </div>
+        </div>
+        
+        <!-- Decorative elements -->
+        <div class="absolute bottom-10 left-1/4 w-16 h-16 rounded-full bg-kpop-pink opacity-20 animate-pulse"></div>
+        <div class="absolute top-20 right-1/4 w-12 h-12 rounded-full bg-korean-red opacity-20 animate-pulse" style="animation-delay: 0.5s;"></div>
+    </section>
+
+    <!-- Popular Groups Section -->
+    <section class="py-24 relative bg-gradient-to-b from-white to-peach-light">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="inline-block bg-kpop-pink/20 text-kpop-pink px-6 py-2 rounded-full mb-4 text-sm font-bold">
+                    TOP GROUPS
+                </span>
+                <h2 class="text-3xl md:text-4xl font-playfair font-bold mb-4 relative inline-block">
+                    Iconic K-Pop Groups
+                </h2>
+                <p class="text-gray-600 max-w-xl mx-auto">
+                    Discover the most popular and influential K-Pop groups dominating the global music scene
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Group Card 1 -->
+                <div class="group-card bg-white rounded-2xl overflow-hidden shadow-xl relative">
+                    <div class="group-image h-72 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1619983081593-e2ba5b543168?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="BTS" class="w-full h-full object-cover transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-kpop-pink text-white text-sm font-bold px-3 py-1 rounded-full">
+                            #1 Group
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-peach-primary flex items-center justify-center mr-3">
+                                <i class="fas fa-star text-korean-red"></i>
+                            </div>
+                            <h3 class="text-xl font-playfair font-bold text-kpop-pink">
+                                BTS
+                            </h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Global superstars known for their meaningful lyrics, powerful performances, and record-breaking achievements.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm font-medium text-kpop-pink">Since 2013</span>
+                            <span class="text-sm font-medium text-gray-500">7 Members</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Group Card 2 -->
+                <div class="group-card bg-white rounded-2xl overflow-hidden shadow-xl relative">
+                    <div class="group-image h-72 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1519735777090-ec97162dc266?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80" alt="BLACKPINK" class="w-full h-full object-cover transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-kpop-pink text-white text-sm font-bold px-3 py-1 rounded-full">
+                            Global Icons
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-peach-primary flex items-center justify-center mr-3">
+                                <i class="fas fa-crown text-korean-red"></i>
+                            </div>
+                            <h3 class="text-xl font-playfair font-bold text-kpop-pink">
+                                BLACKPINK
+                            </h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            The biggest girl group in the world known for their fierce performances and trendsetting style.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm font-medium text-kpop-pink">Since 2016</span>
+                            <span class="text-sm font-medium text-gray-500">4 Members</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Group Card 3 -->
+                <div class="group-card bg-white rounded-2xl overflow-hidden shadow-xl relative">
+                    <div class="group-image h-72 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1593696140826-c58b021acf8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="TWICE" class="w-full h-full object-cover transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-kpop-pink text-white text-sm font-bold px-3 py-1 rounded-full">
+                            Hit Makers
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-peach-primary flex items-center justify-center mr-3">
+                                <i class="fas fa-heart text-korean-red"></i>
+                            </div>
+                            <h3 class="text-xl font-playfair font-bold text-kpop-pink">
+                                TWICE
+                            </h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Known for their catchy songs, synchronized choreography, and massive international fanbase.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm font-medium text-kpop-pink">Since 2015</span>
+                            <span class="text-sm font-medium text-gray-500">9 Members</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Group Card 4 -->
+                <div class="group-card bg-white rounded-2xl overflow-hidden shadow-xl relative">
+                    <div class="group-image h-72 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1542640244-7e112d73779a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="EXO" class="w-full h-full object-cover transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-kpop-pink text-white text-sm font-bold px-3 py-1 rounded-full">
+                            Vocal Power
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-peach-primary flex items-center justify-center mr-3">
+                                <i class="fas fa-microphone text-korean-red"></i>
+                            </div>
+                            <h3 class="text-xl font-playfair font-bold text-kpop-pink">
+                                EXO
+                            </h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                        One of Korea's best-selling artists known for their powerful vocals and intricate concepts.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm font-medium text-kpop-pink">Since 2012</span>
+                            <span class="text-sm font-medium text-gray-500">9 Members</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Songs Section -->
+    <section class="py-24 bg-gradient-to-r from-kpop-pink/10 to-korean-red/10 relative">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-2/3">
+                    <div class="mb-16">
+                        <span class="inline-block bg-kpop-pink/20 text-kpop-pink px-6 py-2 rounded-full mb-4 text-sm font-bold">
+                            CHARTS
+                        </span>
+                        <h2 class="text-3xl md:text-4xl font-playfair font-bold mb-4">
+                            Top K-Pop Songs
+                        </h2>
+                        <p class="text-gray-600">
+                            The hottest K-Pop tracks dominating the charts this week
+                        </p>
+                    </div>
+                    
+                    <div class="music-player bg-white rounded-2xl shadow-xl overflow-hidden">
+                        <div class="p-6 border-b border-gray-200">
+                            <h3 class="text-xl font-bold text-kpop-pink mb-2">Now Playing</h3>
+                            <div class="flex items-center gap-4">
+                                <div class="w-16 h-16 rounded-lg overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Album" class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg">Dynamite</h4>
+                                    <p class="text-gray-500">BTS</p>
+                                </div>
+                                <div class="ml-auto flex gap-4">
+                                    <button class="w-10 h-10 rounded-full bg-kpop-pink text-white flex items-center justify-center">
+                                        <i class="fas fa-step-backward"></i>
+                                    </button>
+                                    <button class="w-12 h-12 rounded-full bg-kpop-pink text-white flex items-center justify-center">
+                                        <i class="fas fa-play"></i>
+                                    </button>
+                                    <button class="w-10 h-10 rounded-full bg-kpop-pink text-white flex items-center justify-center">
+                                        <i class="fas fa-step-forward"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="p-6">
+                            <!-- Song 1 -->
+                            <div class="song-item bg-peach-light/50 rounded-lg p-4 mb-4 flex items-center cursor-pointer">
+                                <div class="w-12 h-12 rounded-lg overflow-hidden mr-4">
+                                    <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Song" class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex-grow">
+                                    <h4 class="font-bold">How You Like That</h4>
+                                    <p class="text-gray-500 text-sm">BLACKPINK</p>
+                                </div>
+                                <div class="text-gray-500">3:01</div>
+                                <button class="ml-4 text-kpop-pink">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                            
+                            <!-- Song 2 -->
+                            <div class="song-item bg-peach-light/50 rounded-lg p-4 mb-4 flex items-center cursor-pointer">
+                                <div class="w-12 h-12 rounded-lg overflow-hidden mr-4">
+                                    <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Song" class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex-grow">
+                                    <h4 class="font-bold">Butter</h4>
+                                    <p class="text-gray-500 text-sm">BTS</p>
+                                </div>
+                                <div class="text-gray-500">2:44</div>
+                                <button class="ml-4 text-kpop-pink">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                            
+                            <!-- Song 3 -->
+                            <div class="song-item bg-peach-light/50 rounded-lg p-4 mb-4 flex items-center cursor-pointer">
+                                <div class="w-12 h-12 rounded-lg overflow-hidden mr-4">
+                                    <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Song" class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex-grow">
+                                    <h4 class="font-bold">Feel Special</h4>
+                                    <p class="text-gray-500 text-sm">TWICE</p>
+                                </div>
+                                <div class="text-gray-500">3:27</div>
+                                <button class="ml-4 text-kpop-pink">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                            
+                            <!-- Song 4 -->
+                            <div class="song-item bg-peach-light/50 rounded-lg p-4 mb-4 flex items-center cursor-pointer">
+                                <div class="w-12 h-12 rounded-lg overflow-hidden mr-4">
+                                    <img src="https://images.unsplash.com/photo-1494232410401-ad00d5433cfa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Song" class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex-grow">
+                                    <h4 class="font-bold">Love Shot</h4>
+                                    <p class="text-gray-500 text-sm">EXO</p>
+                                </div>
+                                <div class="text-gray-500">3:20</div>
+                                <button class="ml-4 text-kpop-pink">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                            
+                            <!-- Song 5 -->
+                            <div class="song-item bg-peach-light/50 rounded-lg p-4 flex items-center cursor-pointer">
+                                <div class="w-12 h-12 rounded-lg overflow-hidden mr-4">
+                                    <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Song" class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex-grow">
+                                    <h4 class="font-bold">Kill This Love</h4>
+                                    <p class="text-gray-500 text-sm">BLACKPINK</p>
+                                </div>
+                                <div class="text-gray-500">3:11</div>
+                                <button class="ml-4 text-kpop-pink">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/3">
+                    <div class="mb-16">
+                        <span class="inline-block bg-korean-red/20 text-korean-red px-6 py-2 rounded-full mb-4 text-sm font-bold">
+                            CONCERTS
+                        </span>
+                        <h2 class="text-3xl md:text-4xl font-playfair font-bold mb-4">
+                            Upcoming Events
+                        </h2>
+                        <p class="text-gray-600">
+                            Don't miss these exciting K-Pop concerts and events
+                        </p>
+                    </div>
+                    
+                    <!-- Concert 1 -->
+                    <div class="concert-card bg-white rounded-2xl shadow-lg overflow-hidden mb-6">
+                        <div class="p-6 border-b border-gray-200 flex items-start">
+                            <div class="bg-kpop-pink text-white w-16 h-16 rounded-lg flex flex-col items-center justify-center mr-4 flex-shrink-0">
+                                <span class="text-xl font-bold">15</span>
+                                <span class="text-xs">SEP</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg">BTS World Tour</h3>
+                                <p class="text-gray-500">Olympic Stadium, Seoul</p>
+                                <div class="mt-2">
+                                    <span class="bg-kpop-pink/10 text-kpop-pink text-xs px-2 py-1 rounded">Sold Out</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4 bg-peach-light flex justify-between items-center">
+                            <span class="text-gray-600">Starts 7:00 PM</span>
+                            <button class="text-kpop-pink font-semibold">More Info</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Concert 2 -->
+                    <div class="concert-card bg-white rounded-2xl shadow-lg overflow-hidden mb-6">
+                        <div class="p-6 border-b border-gray-200 flex items-start">
+                            <div class="bg-korean-red text-white w-16 h-16 rounded-lg flex flex-col items-center justify-center mr-4 flex-shrink-0">
+                                <span class="text-xl font-bold">22</span>
+                                <span class="text-xs">OCT</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg">BLACKPINK in Your Area</h3>
+                                <p class="text-gray-500">KSPO Dome, Seoul</p>
+                                <div class="mt-2">
+                                    <span class="bg-kpop-pink/10 text-kpop-pink text-xs px-2 py-1 rounded">Limited Tickets</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4 bg-peach-light flex justify-between items-center">
+                            <span class="text-gray-600">Starts 8:00 PM</span>
+                            <button class="text-kpop-pink font-semibold">More Info</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Concert 3 -->
+                    <div class="concert-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                        <div class="p-6 border-b border-gray-200 flex items-start">
+                            <div class="bg-peach-dark text-white w-16 h-16 rounded-lg flex flex-col items-center justify-center mr-4 flex-shrink-0">
+                                <span class="text-xl font-bold">5</span>
+                                <span class="text-xs">NOV</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg">TWICE World Tour</h3>
+                                <p class="text-gray-500">Gocheok Sky Dome, Seoul</p>
+                                <div class="mt-2">
+                                    <span class="bg-kpop-pink/10 text-kpop-pink text-xs px-2 py-1 rounded">Tickets Available</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4 bg-peach-light flex justify-between items-center">
+                            <span class="text-gray-600">Starts 6:30 PM</span>
+                            <button class="text-kpop-pink font-semibold">More Info</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="inline-block bg-korean-red/20 text-korean-red px-6 py-2 rounded-full mb-4 text-sm font-bold">
+                    K-POP NEWS
+                </span>
+                <h2 class="text-3xl md:text-4xl font-playfair font-bold mb-4">
+                    Latest K-Pop Updates
+                </h2>
+                <p class="text-gray-600 max-w-xl mx-auto">
+                    Stay updated with the newest releases, comebacks, and industry news
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- News 1 -->
+                <div class="news-card bg-peach-light rounded-2xl overflow-hidden shadow-lg">
+                    <div class="h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="News" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <span class="text-kpop-pink text-sm font-bold">NEW RELEASE</span>
+                            <span class="text-gray-400 text-sm ml-auto">2 hours ago</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">BTS Announces New Album for 2024</h3>
+                        <p class="text-gray-600 mb-4">Global superstars BTS have announced their highly anticipated new album set to release early next year with a world tour to follow.</p>
+                        <a href="#" class="text-kpop-pink font-semibold flex items-center gap-2">
+                            Read More <i class="fas fa-arrow-right text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- News 2 -->
+                <div class="news-card bg-peach-light rounded-2xl overflow-hidden shadow-lg">
+                    <div class="h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1499415479124-43c324e7e8bd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" alt="News" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <span class="text-kpop-pink text-sm font-bold">AWARDS</span>
+                            <span class="text-gray-400 text-sm ml-auto">1 day ago</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">BLACKPINK Wins MTV Award</h3>
+                        <p class="text-gray-600 mb-4">BLACKPINK took home the Best K-Pop award at the MTV Music Awards, cementing their global superstar status.</p>
+                        <a href="#" class="text-kpop-pink font-semibold flex items-center gap-2">
+                            Read More <i class="fas fa-arrow-right text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- News 3 -->
+                <div class="news-card bg-peach-light rounded-2xl overflow-hidden shadow-lg">
+                    <div class="h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="News" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <span class="text-kpop-pink text-sm font-bold">INTERVIEW</span>
+                            <span class="text-gray-400 text-sm ml-auto">3 days ago</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">TWICE Talks About Their Musical Evolution</h3>
+                        <p class="text-gray-600 mb-4">In an exclusive interview, TWICE members discuss their musical journey and growth as artists over the years.</p>
+                        <a href="#" class="text-kpop-pink font-semibold flex items-center gap-2">
+                            Read More <i class="fas fa-arrow-right text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="py-24 bg-gradient-to-b from-kpop-pink/10 to-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="inline-block bg-korean-red/20 text-korean-red px-6 py-2 rounded-full mb-4 text-sm font-bold">
+                    GALLERY
+                </span>
+                <h2 class="text-3xl md:text-4xl font-playfair font-bold mb-4">
+                    K-Pop Visual Universe
+                </h2>
+                <p class="text-gray-600 max-w-xl mx-auto">
+                    Captivating moments from performances, music videos, and behind the scenes
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="gallery-item rounded-xl overflow-hidden h-64">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Gallery" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item rounded-xl overflow-hidden h-64">
+                    <img src="https://images.unsplash.com/photo-1499415479124-43c324e7e8bd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" alt="Gallery" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item rounded-xl overflow-hidden h-64">
+                    <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Gallery" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item rounded-xl overflow-hidden h-64">
+                    <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Gallery" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item rounded-xl overflow-hidden h-64">
+                    <img src="https://images.unsplash.com/photo-1511376777868-611b54f68947?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Gallery" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item rounded-xl overflow-hidden h-64">
+                    <img src="https://images.unsplash.com/photo-1593696140826-c58b021acf8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Gallery" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item rounded-xl overflow-hidden h-64">
+                    <img src="https://images.unsplash.com/photo-1519735777090-ec97162dc266?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80" alt="Gallery" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item rounded-xl overflow-hidden h-64">
+                    <img src="https://images.unsplash.com/photo-1542640244-7e112d73779a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Gallery" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-16 bg-gradient-to-r from-kpop-pink to-korean-red">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="font-playfair font-bold text-3xl md:text-4xl text-white mb-4">
+                    Join the K-Pop Revolution
+                </h2>
+                <p class="text-white/90 text-lg mb-8">
+                    Subscribe to our newsletter for exclusive updates, concert alerts, and K-Pop news
+                </p>
+                
+                <form class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+                    <input type="email" placeholder="Your email address" class="flex-grow px-5 py-3 rounded-full focus:outline-none focus:ring-2 focus:ring-white">
+                    <button type="submit" class="bg-white text-kpop-pink font-bold px-8 py-3 rounded-full transition-colors shadow-lg">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-text-dark text-white pt-20 pb-10">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
+                <!-- Column 1 -->
+                <div>
+                    <h3 class="text-xl font-playfair font-bold mb-6 relative pb-3">KoreaVerse</h3>
+                    <p class="text-gray-400 mb-6">
+                        Discover the beauty and depth of Korean heritage through our curated content and resources.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center transition-all hover:bg-korean-red hover:-translate-y-1">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center transition-all hover:bg-korean-red hover:-translate-y-1">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center transition-all hover:bg-korean-red hover:-translate-y-1">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center transition-all hover:bg-korean-red hover:-translate-y-1">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Column 2 -->
+                <div>
+                    <h3 class="text-xl font-playfair font-bold mb-6 relative pb-3">Explore</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Home</a></li>
+                        <li><a href="culture.html" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Culture</a></li>
+                        <li><a href="food.html" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Food</a></li>
+                        <li><a href="kpop.html" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> K-Pop</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Learn</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 3 -->
+                <div>
+                    <h3 class="text-xl font-playfair font-bold mb-6 relative pb-3">K-Pop Resources</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> New Releases</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Concert Tickets</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Artist Profiles</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Fan Communities</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Merchandise</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 4 -->
+                <div>
+                    <h3 class="text-xl font-playfair font-bold mb-6 relative pb-3">Contact Us</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope text-peach-accent mt-1 mr-3"></i>
+                            <span class="text-gray-400">contact@koreaverse.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone text-peach-accent mt-1 mr-3"></i>
+                            <span class="text-gray-400">+82 2 123 4567</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-peach-accent mt-1 mr-3"></i>
+                            <span class="text-gray-400">Seoul, South Korea</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-700 text-center text-gray-500">
+                <p>&copy; 2025 KoreaVerse. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('nav');
+        
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('hidden');
+            navMenu.classList.toggle('md:block');
+        });
+        
+        // Card animation on scroll
+        const groupCards = document.querySelectorAll('.group-card');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        groupCards.forEach(card => {
+            observer.observe(card);
+        });
+        
+        // Play button functionality
+        const playButtons = document.querySelectorAll('.song-item button');
+        playButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const icon = button.querySelector('i');
+                if (icon.classList.contains('fa-play')) {
+                    icon.classList.remove('fa-play');
+                    icon.classList.add('fa-pause');
+                } else {
+                    icon.classList.remove('fa-pause');
+                    icon.classList.add('fa-play');
+                }
+            });
+        });
+        
+        // Song item click to play
+        const songItems = document.querySelectorAll('.song-item');
+        songItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const button = item.querySelector('button');
+                const icon = button.querySelector('i');
+                if (icon.classList.contains('fa-play')) {
+                    icon.classList.remove('fa-play');
+                    icon.classList.add('fa-pause');
+                } else {
+                    icon.classList.remove('fa-pause');
+                    icon.classList.add('fa-play');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
