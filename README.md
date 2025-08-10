@@ -103,29 +103,3 @@ theme: {
 }
 ```
 
-5. **Update Map Location**: Replace the Google Maps embed URL with your preferred location
-
-## Contributing <a name="contributing"></a>
-Contributions are welcome! To contribute to KoreaVerse:
-
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-Please ensure your code follows the existing style and includes appropriate documentation.
-
-## License <a name="license"></a>
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Contact <a name="contact"></a>
-For questions or support, please contact:
-
-- **Project Lead**: Min-Ji Park
-- **Email**: contact@koreaverse.com
-- **Website**: [www.koreaverse.com](https://www.koreaverse.com)
-
----
-
-**Experience the beauty of Korea with KoreaVerse - Where tradition meets innovation!** 
