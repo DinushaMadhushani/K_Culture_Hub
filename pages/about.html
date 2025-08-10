@@ -3,624 +3,386 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | Dancheong Diary</title>
+    <title>About KoreaVerse | Discover Korean Culture</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'peach-light': '#FFF5EE',
+                        'peach-primary': '#FFDAB9',
+                        'peach-secondary': '#FFE5B4',
+                        'peach-accent': '#FFA07A',
+                        'peach-dark': '#FF8C00',
+                        'korean-red': '#CD1818',
+                        'text-dark': '#333333',
+                        'text-light': '#ffffff',
+                    },
+                    fontFamily: {
+                        'playfair': ['Playfair Display', 'serif'],
+                        'poppins': ['Poppins', 'sans-serif'],
+                    },
+                    animation: {
+                        'fadeInDown': 'fadeInDown 1s ease forwards',
+                        'fadeInUp': 'fadeInUp 1s ease forwards',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeInDown: {
+                            '0%': { opacity: '0', transform: 'translateY(-30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        }
+                    }
+                }
+            }
         }
-        
-        :root {
-            --peach-light: #FFF0E6;
-            --peach-primary: #FFD0B5;
-            --peach-dark: #FF9A76;
-            --text-dark: #3A2E2A;
-            --text-light: #5C4A42;
-            --off-white: #FFF8F5;
-            --charcoal: #2D2A32;
-        }
-        
+    </script>
+    <style type="text/css">
         body {
-            background-color: var(--off-white);
-            color: var(--text-dark);
-            line-height: 1.6;
+            background-color: #FFF5EE;
+            overflow-x: hidden;
         }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Header */
-        header {
-            background-color: white;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-        }
-        
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--peach-dark);
-        }
-        
-        .logo span {
-            color: var(--text-dark);
-        }
-        
-        nav a {
-            margin-left: 20px;
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
-            position: relative;
-        }
-        
-        nav a:hover {
-            color: var(--peach-dark);
-        }
-        
-        nav a.active::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: var(--peach-dark);
-        }
-        
-        /* Page Header */
-        .page-header {
-            background: linear-gradient(135deg, var(--peach-light) 0%, var(--peach-primary) 100%);
-            padding: 100px 0;
-            text-align: center;
+        .logo-icon {
+            background: linear-gradient(135deg, #FF8C00, #CD1818);
             position: relative;
             overflow: hidden;
+            box-shadow: 0 5px 15px rgba(255, 140, 0, 0.3);
         }
-        
-        .page-header::before {
-            content: '';
+        .logo-icon::before {
+            content: "";
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 Q50,20 100,0 L100,100 Q50,80 0,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
-            background-size: cover;
-            opacity: 0.3;
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3) 1px, transparent 2px),
+                radial-gradient(circle at 70% 70%, rgba(255,255,255,0.3) 1px, transparent 2px);
+            background-size: 20px 20px;
         }
-        
-        .page-header h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            position: relative;
-        }
-        
-        .page-header p {
-            max-width: 700px;
-            margin: 0 auto;
-            font-size: 1.2rem;
-            color: var(--text-light);
-            position: relative;
-        }
-        
-        /* Brand Story */
-        .brand-story {
-            padding: 80px 0;
-            display: flex;
-            align-items: center;
-            gap: 50px;
-        }
-        
-        .story-content {
-            flex: 1;
-        }
-        
-        .story-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 25px;
-            position: relative;
-            padding-bottom: 15px;
-        }
-        
-        .story-content h2::after {
+        .feature-card::before {
             content: '';
             position: absolute;
-            bottom: 0;
+            top: 0;
             left: 0;
-            width: 80px;
-            height: 3px;
-            background-color: var(--peach-dark);
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #FF8C00, #CD1818);
         }
-        
-        .story-content p {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-            color: var(--text-light);
+        .gallery-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
         }
-        
-        .story-image {
-            flex: 1;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            height: 500px;
-            background-color: #e0e0e0; /* Placeholder color */
+        .about-hero {
+            background: 
+                linear-gradient(135deg, rgba(8, 4, 4, 0.9) 0%, rgba(14, 11, 7, 0.9) 100%),
+                url('https://images.unsplash.com/photo-1593692909680-61b48e7b7a7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover;
         }
-        
-        /* Mission Section */
-        .mission {
-            background-color: var(--peach-light);
-            padding: 80px 0;
-            text-align: center;
-        }
-        
-        .mission h2 {
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 15px;
-        }
-        
-        .mission h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background-color: var(--peach-dark);
-        }
-        
-        .mission-content {
-            max-width: 800px;
-            margin: 0 auto 40px;
-            font-size: 1.1rem;
-            color: var(--text-light);
-        }
-        
-        .values {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-        
-        .value-card {
-            background: white;
-            padding: 40px 30px;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s;
-        }
-        
-        .value-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .value-icon {
-            font-size: 2.5rem;
-            color: var(--peach-dark);
-            margin-bottom: 20px;
-        }
-        
-        .value-card h3 {
-            margin-bottom: 15px;
-        }
-        
-        .value-card p {
-            color: var(--text-light);
-        }
-        
-        /* Team Section */
-        .team {
-            padding: 80px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 15px;
-        }
-        
         .section-title h2::after {
             content: '';
             position: absolute;
-            bottom: 0;
+            bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
             width: 80px;
-            height: 3px;
-            background-color: var(--peach-dark);
+            height: 4px;
+            background: #CD1818;
+            border-radius: 2px;
         }
-        
-        .team-members {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-        
-        .member-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            text-align: center;
-        }
-        
-        .member-image {
-            height: 300px;
-            background-color: #e0e0e0; /* Placeholder color */
-        }
-        
-        .member-info {
-            padding: 25px;
-        }
-        
-        .member-info h3 {
-            margin-bottom: 5px;
-        }
-        
-        .member-role {
-            color: var(--peach-dark);
-            margin-bottom: 15px;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 15px;
-        }
-        
-        .social-links a {
-            color: var(--text-dark);
-            transition: color 0.3s;
-        }
-        
-        .social-links a:hover {
-            color: var(--peach-dark);
-        }
-        
-        /* Contact Section */
-        .contact {
-            background: linear-gradient(135deg, var(--peach-light) 0%, var(--peach-primary) 100%);
-            padding: 80px 0;
-            text-align: center;
-        }
-        
-        .contact h2 {
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 15px;
-        }
-        
-        .contact h2::after {
+        .culture-text h2::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
+            bottom: -10px;
+            left: 0;
             width: 80px;
-            height: 3px;
-            background-color: var(--peach-dark);
+            height: 4px;
+            background: #CD1818;
+            border-radius: 2px;
         }
-        
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            max-width: 1000px;
-            margin: 0 auto 50px;
-        }
-        
-        .info-card {
-            background: rgba(255, 255, 255, 0.8);
-            padding: 30px;
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-        }
-        
-        .info-icon {
-            font-size: 2rem;
-            color: var(--peach-dark);
-            margin-bottom: 20px;
-        }
-        
-        .info-card h3 {
-            margin-bottom: 15px;
-        }
-        
-        .contact-btn {
-            display: inline-block;
-            padding: 15px 40px;
-            background: var(--peach-dark);
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 500;
-            margin-top: 20px;
-            transition: all 0.3s;
-        }
-        
-        .contact-btn:hover {
-            background: var(--charcoal);
-            transform: translateY(-3px);
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--charcoal);
-            color: white;
-            padding: 60px 0 30px;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-col h3 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-col h3::after {
+        .footer-column h3::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 40px;
-            height: 2px;
-            background: var(--peach-dark);
+            width: 50px;
+            height: 3px;
+            background: #CD1818;
+            border-radius: 2px;
         }
-        
-        .footer-col ul {
-            list-style: none;
+        .btn-primary {
+            background: linear-gradient(to right, #FF8C00, #CD1818);
+            transition: all 0.3s ease;
         }
-        
-        .footer-col ul li {
-            margin-bottom: 10px;
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(205, 24, 24, 0.4);
         }
-        
-        .footer-col ul li a {
-            color: #ddd;
-            text-decoration: none;
-            transition: color 0.3s;
+        .btn-secondary {
+            background: white;
+            transition: all 0.3s ease;
         }
-        
-        .footer-col ul li a:hover {
-            color: var(--peach-dark);
+        .btn-secondary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
-        
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
+        .feature-card {
+            transition: all 0.4s ease;
+            transform: translateY(20px);
+            opacity: 0;
         }
-        
-        .social-icons a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
+        .feature-card.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .mission-card {
+            transition: all 0.3s ease;
+        }
+        .mission-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        .team-card {
+            transition: all 0.3s ease;
+        }
+        .team-card:hover {
+            transform: translateY(-10px);
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
-            color: white;
-            transition: background 0.3s;
+            background: linear-gradient(135deg, #FF8C00, #CD1818);
+            z-index: 2;
         }
-        
-        .social-icons a:hover {
-            background: var(--peach-dark);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
-        }
-        
-        /* Responsive */
-        @media (max-width: 900px) {
-            .brand-story {
-                flex-direction: column;
-            }
-            
-            .story-image {
-                width: 100%;
-                order: -1;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            nav {
-                margin-top: 15px;
-            }
-            
-            .page-header {
-                padding: 80px 0;
-            }
-            
-            .page-header h1 {
-                font-size: 2.5rem;
-            }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #FF8C00;
+            z-index: 1;
         }
     </style>
 </head>
-<body>
+<body class="font-poppins text-text-dark bg-peach-light overflow-x-hidden">
     <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">Dancheong<span>Diary</span></div>
-                <nav>
-                    <a href="#">Home</a>
-                    <a href="#">Collections</a>
-                    <a href="#">Lookbook</a>
-                    <a href="#">Trends</a>
-                    <a href="#">Culture</a>
-                    <a href="#" class="active">About</a>
-                </nav>
-            </div>
+    <header class="bg-white/95 shadow-md sticky top-0 z-50 backdrop-blur-sm">
+        <div class="container mx-auto px-4 py-5 flex justify-between items-center">
+            <a href="index.html" class="logo flex items-center no-underline animate-float">
+                <div class="logo-icon w-14 h-14 rounded-full flex items-center justify-center mr-3">
+                    <i class="fas fa-landmark text-white text-2xl relative z-10"></i>
+                </div>
+                <div class="logo-text text-korean-red text-2xl md:text-3xl font-playfair font-bold relative">
+                    Korea<span class="text-peach-dark">Verse</span>
+                </div>
+            </a>
+            <button class="mobile-menu-btn md:hidden text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="hidden md:block">
+                <ul class="flex space-x-8">
+                    <li><a href="index.html" class="text-lg font-medium transition-colors hover:text-korean-red relative after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-korean-red after:transition-all hover:after:w-full">Home</a></li>
+                    <li><a href="./pages/culture.html" class="text-lg font-medium transition-colors hover:text-korean-red relative after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-korean-red after:transition-all hover:after:w-full">Culture</a></li>
+                    <li><a href="./pages/food.html" class="text-lg font-medium transition-colors hover:text-korean-red relative after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-korean-red after:transition-all hover:after:w-full">Food</a></li>
+                    <li><a href="./pages/kpop.html" class="text-lg font-medium transition-colors hover:text-korean-red relative after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-korean-red after:transition-all hover:after:w-full">K-Pop</a></li>
+                    <li><a href="./pages/learn.html" class="text-lg font-medium transition-colors hover:text-korean-red relative after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-korean-red after:transition-all hover:after:w-full">Learn</a></li>
+                    <li><a href="#" class="text-lg font-medium transition-colors hover:text-korean-red relative after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-korean-red after:transition-all hover:after:w-full text-korean-red">About</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <h1>Our Story</h1>
-            <p>Discover the journey of Dancheong Diary and our passion for blending Korean heritage with contemporary fashion</p>
-        </div>
-    </section>
-
-    <!-- Brand Story -->
-    <section class="brand-story">
-        <div class="container">
-            <div class="story-content">
-                <h2>Where Tradition Meets Modernity</h2>
-                <p>Founded in 2018, Dancheong Diary began as a passion project by designer Min-ji Park. Growing up in Seoul surrounded by the vibrant colors of Gyeongbokgung Palace and the elegant lines of traditional Hanbok, Min-ji felt a deep connection to Korea's artistic heritage.</p>
-                <p>After studying fashion design in Paris, Min-ji returned to Seoul with a vision: to create clothing that honors traditional Korean aesthetics while embracing contemporary silhouettes. What started as a small studio in Insadong has grown into a beloved brand that celebrates Korea's rich cultural legacy through fashion.</p>
-                <p>The name "Dancheong Diary" comes from the traditional Korean decorative coloring used on wooden buildings. Just as Dancheong artists documented stories through their vibrant patterns, we record our cultural journey through each collection we create.</p>
-            </div>
-            <div class="story-image"></div>
+    <!-- Hero Section -->
+    <section class="about-hero min-h-[70vh] flex items-center relative overflow-hidden">
+        <div class="container mx-auto px-4 py-20 text-center relative z-10">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-playfair font-bold mb-5 text-white animate-fadeInDown leading-tight">
+                Our <span class="text-korean-red">Story</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-10 text-white animate-fadeInUp opacity-0 animation-delay-300 max-w-2xl mx-auto">
+                Discover the passion behind KoreaVerse and our mission to share Korean culture with the world
+            </p>
         </div>
     </section>
 
     <!-- Mission Section -->
-    <section class="mission">
-        <div class="container">
-            <h2>Our Mission & Values</h2>
-            <div class="mission-content">
-                <p>At Dancheong Diary, we believe fashion should tell a story. Our mission is to preserve Korean cultural heritage through contemporary design, creating pieces that connect wearers to centuries of artistic tradition while expressing modern individuality.</p>
+    <section class="py-24 bg-peach-primary/20 relative">
+        <div class="container mx-auto px-4">
+            <div class="section-title text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-playfair font-bold mb-4 relative inline-block">
+                    Our Mission & Vision
+                </h2>
+                <p class="text-peach-dark max-w-xl mx-auto text-lg">
+                    Bridging cultures through authentic Korean experiences
+                </p>
             </div>
             
-            <div class="values">
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-hands"></i>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <!-- Mission Card 1 -->
+                <div class="mission-card bg-white rounded-2xl p-8 shadow-lg border border-peach-primary/30">
+                    <div class="w-16 h-16 rounded-full bg-peach-primary flex items-center justify-center mb-6">
+                        <i class="fas fa-globe-asia text-korean-red text-2xl"></i>
                     </div>
-                    <h3>Cultural Preservation</h3>
-                    <p>We research and honor traditional techniques, ensuring they remain relevant for future generations.</p>
+                    <h3 class="text-xl font-playfair font-bold mb-4">Cultural Ambassador</h3>
+                    <p class="text-gray-600">
+                        We serve as a bridge between Korea and the world, promoting understanding and appreciation of Korean heritage.
+                    </p>
                 </div>
                 
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-leaf"></i>
+                <!-- Mission Card 2 -->
+                <div class="mission-card bg-white rounded-2xl p-8 shadow-lg border border-peach-primary/30">
+                    <div class="w-16 h-16 rounded-full bg-peach-primary flex items-center justify-center mb-6">
+                        <i class="fas fa-book-open text-korean-red text-2xl"></i>
                     </div>
-                    <h3>Sustainable Practices</h3>
-                    <p>From sourcing to production, we prioritize eco-friendly materials and ethical manufacturing.</p>
+                    <h3 class="text-xl font-playfair font-bold mb-4">Educational Resource</h3>
+                    <p class="text-gray-600">
+                        Providing accurate, engaging content to help learners of all ages discover Korean traditions and language.
+                    </p>
                 </div>
                 
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-lightbulb"></i>
+                <!-- Mission Card 3 -->
+                <div class="mission-card bg-white rounded-2xl p-8 shadow-lg border border-peach-primary/30">
+                    <div class="w-16 h-16 rounded-full bg-peach-primary flex items-center justify-center mb-6">
+                        <i class="fas fa-hands-helping text-korean-red text-2xl"></i>
                     </div>
-                    <h3>Innovative Design</h3>
-                    <p>We reinterpret traditional elements in fresh, contemporary ways that resonate globally.</p>
+                    <h3 class="text-xl font-playfair font-bold mb-4">Community Hub</h3>
+                    <p class="text-gray-600">
+                        Creating a global community where Korean culture enthusiasts can connect and share their passion.
+                    </p>
                 </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-heart"></i>
+            </div>
+            
+            <div class="bg-white rounded-2xl shadow-xl p-10 max-w-4xl mx-auto border border-peach-primary/30">
+                <div class="flex flex-col md:flex-row items-center gap-10">
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-playfair font-bold mb-4">Why We Started</h3>
+                        <p class="text-gray-600 mb-5">
+                            KoreaVerse was born from a simple idea: to create a comprehensive, accessible platform for anyone interested in Korean culture. As Korean culture gained global popularity, we noticed a lack of centralized, authentic resources for those wanting to explore beyond K-Pop and K-Dramas.
+                        </p>
+                        <p class="text-gray-600">
+                            Our founder, Min-Ji Park, envisioned a space where traditional heritage and modern innovations coexist, offering a balanced view of Korea's rich cultural landscape.
+                        </p>
                     </div>
-                    <h3>Community Connection</h3>
-                    <p>We collaborate with Korean artisans and support cultural preservation initiatives.</p>
+                    <div class="flex-1">
+                        <img src="https://images.unsplash.com/photo-1598935898637-7b0d4eb0b5d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Founder" class="rounded-xl shadow-lg">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Team Section -->
-    <section class="team">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Creative Family</h2>
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="section-title text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-playfair font-bold mb-4 relative inline-block">
+                    Meet Our Team
+                </h2>
+                <p class="text-peach-dark max-w-xl mx-auto text-lg">
+                    Passionate individuals dedicated to sharing Korean culture
+                </p>
             </div>
             
-            <div class="team-members">
-                <div class="member-card">
-                    <div class="member-image"></div>
-                    <div class="member-info">
-                        <h3>Min-ji Park</h3>
-                        <div class="member-role">Founder & Creative Director</div>
-                        <p>Seoul-born designer blending Korean tradition with Parisian elegance.</p>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Team Member 1 -->
+                <div class="team-card bg-peach-light rounded-2xl overflow-hidden shadow-lg transition-all">
+                    <div class="team-img h-72 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Min-Ji Park" class="w-full h-full object-cover">
+                    </div>
+                    <div class="team-content p-6">
+                        <h3 class="text-xl font-playfair font-bold">Min-Ji Park</h3>
+                        <p class="text-korean-red mb-3">Founder & CEO</p>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Cultural anthropologist with 15+ years experience in Korean heritage preservation.
+                        </p>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-gray-500 hover:text-korean-red">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="text-gray-500 hover:text-korean-red">
+                                <i class="fab fa-twitter"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
                 
-                <div class="member-card">
-                    <div class="member-image"></div>
-                    <div class="member-info">
-                        <h3>Ji-hoon Kim</h3>
-                        <div class="member-role">Head Pattern Designer</div>
-                        <p>Master of traditional Dancheong patterns and modern textile innovation.</p>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
+                <!-- Team Member 2 -->
+                <div class="team-card bg-peach-light rounded-2xl overflow-hidden shadow-lg transition-all">
+                    <div class="team-img h-72 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1590086782792-42dd2350140d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Ji-Hoon Kim" class="w-full h-full object-cover">
+                    </div>
+                    <div class="team-content p-6">
+                        <h3 class="text-xl font-playfair font-bold">Ji-Hoon Kim</h3>
+                        <p class="text-korean-red mb-3">Cultural Director</p>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Former museum curator specializing in Joseon Dynasty artifacts and traditions.
+                        </p>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-gray-500 hover:text-korean-red">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="text-gray-500 hover:text-korean-red">
+                                <i class="fab fa-instagram"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
                 
-                <div class="member-card">
-                    <div class="member-image"></div>
-                    <div class="member-info">
-                        <h3>Yoona Lee</h3>
-                        <div class="member-role">Cultural Research Director</div>
-                        <p>Preserving and documenting Korea's fashion heritage for modern application.</p>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                <!-- Team Member 3 -->
+                <div class="team-card bg-peach-light rounded-2xl overflow-hidden shadow-lg transition-all">
+                    <div class="team-img h-72 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Soo-Yeon Lee" class="w-full h-full object-cover">
+                    </div>
+                    <div class="team-content p-6">
+                        <h3 class="text-xl font-playfair font-bold">Soo-Yeon Lee</h3>
+                        <p class="text-korean-red mb-3">Content Director</p>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Former journalist with expertise in Korean modern culture and entertainment.
+                        </p>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-gray-500 hover:text-korean-red">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="text-gray-500 hover:text-korean-red">
+                                <i class="fab fa-medium"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
                 
-                <div class="member-card">
-                    <div class="member-image"></div>
-                    <div class="member-info">
-                        <h3>Hae-won Jung</h3>
-                        <div class="member-role">Sustainability Manager</div>
-                        <p>Ensuring ethical practices and eco-friendly materials throughout our process.</p>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
+                <!-- Team Member 4 -->
+                <div class="team-card bg-peach-light rounded-2xl overflow-hidden shadow-lg transition-all">
+                    <div class="team-img h-72 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1557862921-37829c790f19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="David Park" class="w-full h-full object-cover">
+                    </div>
+                    <div class="team-content p-6">
+                        <h3 class="text-xl font-playfair font-bold">David Park</h3>
+                        <p class="text-korean-red mb-3">Technology Lead</p>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Tech innovator creating immersive experiences for cultural education.
+                        </p>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-gray-500 hover:text-korean-red">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" class="text-gray-500 hover:text-korean-red">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -628,85 +390,234 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact">
-        <div class="container">
-            <h2>Connect With Us</h2>
-            
-            <div class="contact-info">
-                <div class="info-card">
-                    <div class="info-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <h3>Visit Our Studio</h3>
-                    <p>37 Insadong-gil<br>Jongno-gu, Seoul<br>South Korea 03144</p>
+   <!-- Insert this section after the Team Section and before the Footer -->
+<!-- ===== Contact Section ===== -->
+<section class="py-24 bg-peach-light relative">
+    <div class="container mx-auto px-4">
+        <div class="section-title text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-playfair font-bold mb-4 relative inline-block">
+                Get In Touch
+            </h2>
+            <p class="text-peach-dark max-w-xl mx-auto text-lg">
+                Have questions or suggestions? We'd love to hear from you!
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+            <!-- Contact Information -->
+            <div class="bg-white rounded-2xl p-8 shadow-lg border border-peach-primary/30">
+                <div class="mb-8">
+                    <h3 class="text-2xl font-playfair font-bold mb-6 relative pb-3">
+                        Contact Information
+                    </h3>
+                    <p class="text-gray-600 mb-6">
+                        Reach out to us through any of these channels. Our team typically responds within 24 hours.
+                    </p>
                 </div>
                 
-                <div class="info-card">
-                    <div class="info-icon">
-                        <i class="fas fa-envelope"></i>
+                <div class="space-y-6">
+                    <!-- Contact Item 1 -->
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 rounded-full bg-peach-primary flex items-center justify-center flex-shrink-0 mr-4">
+                            <i class="fas fa-map-marker-alt text-korean-red text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-1">Our Office</h4>
+                            <p class="text-gray-600">123 Gangnam-daero, Gangnam-gu<br>Seoul, South Korea 06123</p>
+                        </div>
                     </div>
-                    <h3>Email Us</h3>
-                    <p>hello@dancheongdiary.com<br>press@dancheongdiary.com<br>collaborate@dancheongdiary.com</p>
-                </div>
-                
-                <div class="info-card">
-                    <div class="info-icon">
-                        <i class="fas fa-phone"></i>
+                    
+                    <!-- Contact Item 2 -->
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 rounded-full bg-peach-primary flex items-center justify-center flex-shrink-0 mr-4">
+                            <i class="fas fa-phone text-korean-red text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-1">Phone</h4>
+                            <p class="text-gray-600">+82 2 1234 5678<br>+82 10 1234 5678</p>
+                        </div>
                     </div>
-                    <h3>Call Us</h3>
-                    <p>+82 2 1234 5678<br>Monday-Friday: 9AM-6PM KST<br>Saturday: 10AM-4PM KST</p>
+                    
+                    <!-- Contact Item 3 -->
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 rounded-full bg-peach-primary flex items-center justify-center flex-shrink-0 mr-4">
+                            <i class="fas fa-envelope text-korean-red text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-1">Email</h4>
+                            <p class="text-gray-600">contact@koreaverse.com<br>support@koreaverse.com</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Item 4 -->
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 rounded-full bg-peach-primary flex items-center justify-center flex-shrink-0 mr-4">
+                            <i class="fas fa-clock text-korean-red text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-1">Working Hours</h4>
+                            <p class="text-gray-600">Monday - Friday: 9AM - 6PM<br>Saturday: 10AM - 4PM</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             
-            <a href="#" class="contact-btn">Send a Message</a>
+            <!-- Contact Form -->
+            <div class="lg:col-span-2 bg-white rounded-2xl p-8 shadow-lg border border-peach-primary/30">
+                <h3 class="text-2xl font-playfair font-bold mb-6">Send Us a Message</h3>
+                
+                <form class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Full Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-korean-red focus:border-transparent" placeholder="Enter your name">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-korean-red focus:border-transparent" placeholder="Enter your email">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
+                        <input type="text" id="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-korean-red focus:border-transparent" placeholder="What is this regarding?">
+                    </div>
+                    
+                    <div>
+                        <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                        <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-korean-red focus:border-transparent" placeholder="Your message here..."></textarea>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <input type="checkbox" id="subscribe" class="w-4 h-4 text-korean-red rounded focus:ring-korean-red">
+                        <label for="subscribe" class="ml-2 text-gray-600">Subscribe to our cultural newsletter</label>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary px-8 py-4 rounded-lg font-semibold text-lg text-white flex items-center gap-2 justify-center shadow-lg w-full sm:w-auto">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
         </div>
-    </section>
+        
+       
+<!-- ===== End Contact Section ===== -->
+
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-col">
-                    <h3>Dancheong Diary</h3>
-                    <p>Korean-inspired fashion that bridges tradition and modernity. Our collections celebrate cultural heritage through contemporary design.</p>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-pinterest"></i></a>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+    <footer class="bg-text-dark text-white pt-20 pb-10">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
+                <!-- Column 1 -->
+                <div>
+                    <h3 class="text-xl font-playfair font-bold mb-6 relative pb-3">KoreaVerse</h3>
+                    <p class="text-gray-400 mb-6">
+                        Discover the beauty and depth of Korean heritage through our curated content and resources.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center transition-all hover:bg-korean-red hover:-translate-y-1">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center transition-all hover:bg-korean-red hover:-translate-y-1">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center transition-all hover:bg-korean-red hover:-translate-y-1">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center transition-all hover:bg-korean-red hover:-translate-y-1">
+                            <i class="fab fa-youtube"></i>
+                        </a>
                     </div>
                 </div>
                 
-                <div class="footer-col">
-                    <h3>Explore</h3>
-                    <ul>
-                        <li><a href="#">Collections</a></li>
-                        <li><a href="#">Lookbooks</a></li>
-                        <li><a href="#">Trend Reports</a></li>
-                        <li><a href="#">Cultural Notes</a></li>
-                        <li><a href="#">Street Style</a></li>
+                <!-- Column 2 -->
+                <div>
+                    <h3 class="text-xl font-playfair font-bold mb-6 relative pb-3">Explore</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Traditional Culture</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Korean Cuisine</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> K-Pop & Entertainment</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Language Learning</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Travel Guides</a></li>
                     </ul>
                 </div>
                 
+                <!-- Column 3 -->
+                <div>
+                    <h3 class="text-xl font-playfair font-bold mb-6 relative pb-3">Resources</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Recipes</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Cultural Events</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Learning Materials</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Photo Gallery</a></li>
+                    </ul>
+                </div>
                 
-                
-                <div class="footer-col">
-                    <h3>Information</h3>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Sustainability</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Press</a></li>
-                        <li><a href="#">Collaborations</a></li>
+                <!-- Column 4 -->
+                <div>
+                    <h3 class="text-xl font-playfair font-bold mb-6 relative pb-3">Contact Us</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope text-peach-accent mt-1 mr-3"></i>
+                            <span class="text-gray-400">contact@koreaverse.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone text-peach-accent mt-1 mr-3"></i>
+                            <span class="text-gray-400">+82 2 123 4567</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-peach-accent mt-1 mr-3"></i>
+                            <span class="text-gray-400">Seoul, South Korea</span>
+                        </li>
                     </ul>
                 </div>
             </div>
             
-            <div class="copyright">
-                <p>&copy; 2023 Dancheong Diary. All rights reserved. | Inspired by Korean Heritage</p>
+            <div class="pt-8 border-t border-gray-700 text-center text-gray-500">
+                <p>&copy; 2025 KoreaVerse. All rights reserved.</p>
             </div>
         </div>
     </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('nav');
+        
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('hidden');
+            navMenu.classList.toggle('block');
+        });
+        
+        // Card animation on scroll
+        const featureCards = document.querySelectorAll('.feature-card');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        featureCards.forEach(card => {
+            observer.observe(card);
+        });
+        
+        // Team card hover effect
+        const teamCards = document.querySelectorAll('.team-card');
+        teamCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.querySelector('.team-img img').style.transform = 'scale(1.05)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.querySelector('.team-img img').style.transform = 'scale(1)';
+            });
+        });
+    </script>
 </body>
 </html>

@@ -3,526 +3,312 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Korean Fashion Culture | Dancheong Diary</title>
+    <title>Korean Culture | KoreaVerse</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'peach-light': '#FFF5EE',
+                        'peach-primary': '#FFDAB9',
+                        'peach-secondary': '#FFE5B4',
+                        'peach-accent': '#FFA07A',
+                        'peach-dark': '#FF8C00',
+                        'korean-red': '#CD1818',
+                        'text-dark': '#333333',
+                        'text-light': '#ffffff',
+                    },
+                    fontFamily: {
+                        'playfair': ['Playfair Display', 'serif'],
+                        'poppins': ['Poppins', 'sans-serif'],
+                    },
+                    animation: {
+                        'fadeInDown': 'fadeInDown 1s ease forwards',
+                        'fadeInUp': 'fadeInUp 1s ease forwards',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeInDown: {
+                            '0%': { opacity: '0', transform: 'translateY(-30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        }
+                    }
+                }
+            }
         }
-        
-        :root {
-            --peach-light: #FFF0E6;
-            --peach-primary: #FFD0B5;
-            --peach-dark: #FF9A76;
-            --text-dark: #3A2E2A;
-            --text-light: #5C4A42;
-            --off-white: #FFF8F5;
-            --charcoal: #2D2A32;
-        }
-        
+    </script>
+    <style type="text/css">
         body {
-            background-color: var(--off-white);
-            color: var(--text-dark);
-            line-height: 1.6;
+            background-color: #FFF5EE;
+            overflow-x: hidden;
         }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Header */
-        header {
-            background-color: white;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-        }
-        
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--peach-dark);
-        }
-        
-        .logo span {
-            color: var(--text-dark);
-        }
-        
-        nav a {
-            margin-left: 20px;
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
+        .logo-icon {
+            background: linear-gradient(135deg, #FF8C00, #CD1818);
             position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(255, 140, 0, 0.3);
         }
-        
-        nav a:hover {
-            color: var(--peach-dark);
-        }
-        
-        nav a.active::after {
-            content: '';
+        .logo-icon::before {
+            content: "";
             position: absolute;
-            bottom: -5px;
+            top: 0;
             left: 0;
             width: 100%;
-            height: 2px;
-            background-color: var(--peach-dark);
+            height: 100%;
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3) 1px, transparent 2px),
+                radial-gradient(circle at 70% 70%, rgba(255,255,255,0.3) 1px, transparent 2px);
+            background-size: 20px 20px;
         }
-        
-        /* Page Header */
-        .page-header {
-            background: linear-gradient(135deg, var(--peach-light) 0%, var(--peach-primary) 100%);
-            padding: 80px 0;
-            text-align: center;
-        }
-        
-        .page-header h1 {
-            font-size: 3rem;
-            margin-bottom: 15px;
-        }
-        
-        .page-header p {
-            max-width: 700px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-            color: var(--text-light);
-        }
-        
-        /* Culture Intro */
-        .culture-intro {
-            padding: 60px 0;
-            text-align: center;
-        }
-        
-        .culture-intro h2 {
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 10px;
-        }
-        
-        .culture-intro h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background-color: var(--peach-dark);
-        }
-        
-        .culture-intro p {
-            max-width: 800px;
-            margin: 0 auto 30px;
-            font-size: 1.1rem;
-        }
-        
-        /* Cultural Insights */
-        .insights {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            padding: 30px 0 60px;
-        }
-        
-        .insight-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .insight-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .insight-img {
-            height: 250px;
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .insight-content {
-            padding: 25px;
-        }
-        
-        .insight-category {
-            display: inline-block;
-            background: var(--peach-light);
-            color: var(--peach-dark);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-        }
-        
-        .insight-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-        
-        .insight-content p {
-            color: var(--text-light);
-            margin-bottom: 20px;
-        }
-        
-        .author {
-            display: flex;
-            align-items: center;
-            margin-top: 20px;
-        }
-        
-        .author-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--peach-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 10px;
-            color: var(--peach-dark);
-        }
-        
-        .author-info {
-            font-size: 0.9rem;
-        }
-        
-        .author-info .name {
-            font-weight: 500;
-        }
-        
-        .author-info .date {
-            color: var(--text-light);
-            font-size: 0.85rem;
-        }
-        
-        /* Traditional Elements */
-        .traditional {
-            background: var(--peach-light);
-            padding: 60px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .section-title h2 {
-            font-size: 2.2rem;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 10px;
-        }
-        
         .section-title h2::after {
             content: '';
             position: absolute;
-            bottom: 0;
+            bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
             width: 80px;
-            height: 3px;
-            background-color: var(--peach-dark);
+            height: 4px;
+            background: #CD1818;
+            border-radius: 2px;
         }
-        
-        .elements {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
+        .btn-primary {
+            background: linear-gradient(to right, #FF8C00, #CD1818);
+            transition: all 0.3s ease;
         }
-        
-        .element-card {
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(205, 24, 24, 0.4);
+        }
+        .btn-secondary {
             background: white;
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        .btn-secondary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        .culture-hero {
+            background: 
+                linear-gradient(135deg, rgba(255,218,185,0.85) 0%, rgba(255,229,180,0.85) 100%),
+                url('https://images.unsplash.com/photo-1560843439-6b13df8c8a4f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover;
         }
         
-        .element-icon {
-            font-size: 2.5rem;
-            color: var(--peach-dark);
-            margin-bottom: 20px;
-        }
-        
-        .element-card h3 {
-            margin-bottom: 15px;
-        }
-        
-        .element-card p {
-            color: var(--text-light);
-        }
-        
-        /* Newsletter */
-        .newsletter {
-            padding: 60px 0;
-            text-align: center;
-        }
-        
-        .newsletter h2 {
-            font-size: 2rem;
-            margin-bottom: 15px;
-        }
-        
-        .newsletter p {
-            max-width: 600px;
-            margin: 0 auto 25px;
-            color: var(--text-light);
-        }
-        
-        .newsletter-form {
-            max-width: 500px;
-            margin: 0 auto;
-            display: flex;
-        }
-        
-        .newsletter-form input {
-            flex: 1;
-            padding: 15px;
-            border: none;
-            border-radius: 30px 0 0 30px;
-            font-size: 1rem;
-        }
-        
-        .newsletter-form button {
-            background: var(--peach-dark);
-            color: white;
-            border: none;
-            padding: 0 25px;
-            border-radius: 0 30px 30px 0;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        
-        .newsletter-form button:hover {
-            background: var(--charcoal);
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--charcoal);
-            color: white;
-            padding: 40px 0 20px;
-        }
-        
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 30px;
-        }
-        
-        .footer-col {
-            flex: 1;
-            min-width: 200px;
-        }
-        
-        .footer-col h3 {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-col h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background: var(--peach-dark);
-        }
-        
-        .footer-col ul {
-            list-style: none;
-        }
-        
-        .footer-col ul li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-col ul li a {
-            color: #ddd;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-col ul li a:hover {
-            color: var(--peach-dark);
-        }
-        
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .social-icons a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            transition: background 0.3s;
-        }
-        
-        .social-icons a:hover {
-            background: var(--peach-dark);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            margin-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            nav {
-                margin-top: 15px;
-            }
-            
-            .page-header {
-                padding: 60px 0;
-            }
-            
-            .page-header h1 {
-                font-size: 2.2rem;
-            }
-            
-            .newsletter-form {
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            .newsletter-form input,
-            .newsletter-form button {
-                width: 100%;
-                border-radius: 30px;
-            }
-        }
+       
     </style>
 </head>
-<body>
+<body class="font-poppins text-text-dark bg-peach-light overflow-x-hidden">
     <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">Dancheong<span>Diary</span></div>
-                <nav>
-                    <a href="#">Home</a>
-                    <a href="#">Collections</a>
-                    <a href="#">Lookbook</a>
-                    <a href="#">Trends</a>
-                    <a href="#" class="active">Culture</a>
-                </nav>
-            </div>
+    <header class="bg-white/95 shadow-md sticky top-0 z-50 backdrop-blur-sm">
+        <div class="container mx-auto px-4 py-5 flex justify-between items-center">
+            <a href="index.html" class="logo flex items-center no-underline animate-float">
+                <div class="logo-icon w-14 h-14 rounded-full flex items-center justify-center mr-3">
+                    <i class="fas fa-landmark text-white text-2xl relative z-10"></i>
+                </div>
+                <div class="logo-text text-korean-red text-2xl md:text-3xl font-playfair font-bold relative">
+                    Korea<span class="text-peach-dark">Verse</span>
+                </div>
+            </a>
+            <button class="mobile-menu-btn md:hidden text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="hidden md:block">
+                <ul class="flex space-x-8">
+                    <li><a href="./index.html" class="text-lg font-medium transition-colors hover:text-korean-red">Home</a></li>
+                    <li><a href="culture.html" class="text-lg font-medium text-korean-red font-bold relative after:absolute after:bottom-[-5px] after:left-0 after:w-full after:h-0.5 after:bg-korean-red">Culture</a></li>
+                    <li><a href="food.html" class="text-lg font-medium transition-colors hover:text-korean-red">Food</a></li>
+                    <li><a href="kpop.html" class="text-lg font-medium transition-colors hover:text-korean-red">K-Pop</a></li>
+                    <li><a href="#" class="text-lg font-medium transition-colors hover:text-korean-red">Learn</a></li>
+                    <li><a href="#" class="text-lg font-medium transition-colors hover:text-korean-red">About</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <h1>Korean Fashion Heritage</h1>
-            <p>Discover the rich cultural traditions that inspire contemporary Korean fashion design</p>
+    <!-- Hero Section -->
+    <section class="culture-hero min-h-[70vh] flex items-center relative overflow-hidden">
+        <div class="container mx-auto px-4 py-20 text-center relative z-10">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-playfair font-bold mb-5 text-white animate-fadeInDown leading-tight">
+                Discover <span class="text-korean-red">Korean Culture</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-10 text-white animate-fadeInUp opacity-0 animation-delay-300 max-w-3xl mx-auto">
+                Explore the rich traditions, timeless customs, and vibrant heritage that define Korea
+            </p>
+            <div class="animate-fadeInUp opacity-0 animation-delay-600">
+                <a href="#explore" class="btn-primary px-10 py-4 rounded-full font-semibold text-lg text-white inline-flex items-center gap-2 shadow-lg">
+                    Explore Traditions <i class="fas fa-arrow-down"></i>
+                </a>
+            </div>
         </div>
     </section>
 
-    <!-- Culture Intro -->
-    <section class="culture-intro">
-        <div class="container">
-            <h2>Roots of Korean Fashion</h2>
-            <p>Korean fashion draws from centuries of cultural heritage, blending traditional aesthetics with modern sensibilities. From the vibrant colors of Dancheong to the elegant silhouettes of Hanbok, each element tells a story of Korea's rich history and artistic traditions.</p>
-        </div>
-    </section>
-
-    <!-- Cultural Insights -->
-    <section class="container">
-        <div class="insights">
-            <!-- Insight 1 -->
-            <div class="insight-card">
-                <div class="insight-img" style="background-image: url('https://images.unsplash.com/photo-1603575448878-868a20723f5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
-                <div class="insight-content">
-                    <span class="insight-category">Hanbok</span>
-                    <h3>The Evolution of Hanbok</h3>
-                    <p>Explore how traditional Korean clothing has transformed from Joseon dynasty court attire to modern streetwear inspiration.</p>
-                    <div class="author">
-                        <div class="author-icon">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="author-info">
-                            <div class="name">Ji-hyun Park</div>
-                            <div class="date">May 15, 2023</div>
-                        </div>
+    <!-- Cultural Overview -->
+    <section id="explore" class="py-24 relative bg-peach-light">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-playfair font-bold mb-4 relative inline-block">
+                    The Essence of Korean Culture
+                </h2>
+                <p class="text-peach-dark max-w-3xl mx-auto text-lg">
+                    A harmonious blend of ancient traditions and modern vitality
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-peach-primary/20">
+                    <div class="w-16 h-16 rounded-full bg-peach-primary flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-hands text-korean-red text-2xl"></i>
                     </div>
+                    <h3 class="text-2xl font-playfair font-bold mb-4 text-center">Values & Etiquette</h3>
+                    <p class="text-gray-600 text-center">
+                        Korean culture emphasizes respect for elders, family values, and harmonious social relationships. 
+                        The concept of 'Jeong' represents deep emotional bonds and affection between people.
+                    </p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-peach-primary/20">
+                    <div class="w-16 h-16 rounded-full bg-peach-primary flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-moon text-korean-red text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-playfair font-bold mb-4 text-center">Festivals & Celebrations</h3>
+                    <p class="text-gray-600 text-center">
+                        From Seollal (Lunar New Year) to Chuseok (Harvest Festival), Koreans celebrate their rich heritage 
+                        with traditional food, games, and ancestral rituals.
+                    </p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-peach-primary/20">
+                    <div class="w-16 h-16 rounded-full bg-peach-primary flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-paint-brush text-korean-red text-2xl"></i>
+                    </div>
+                    <h class="text-2xl font-playfair font-bold mb-4 text-center">Arts & Crafts</h3>
+                    <p class="text-gray-600 text-center">
+                        Korean traditional arts include pottery, calligraphy, paper crafts (Hanji), and knot work (Maedeup). 
+                        Each reflects Korea's aesthetic principles and craftsmanship.
+                    </p>
                 </div>
             </div>
             
-            <!-- Insight 2 -->
-            <div class="insight-card">
-                <div class="insight-img" style="background-image: url('https://images.unsplash.com/photo-1614928228253-dc09cbc3b11c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
-                <div class="insight-content">
-                    <span class="insight-category">Patterns</span>
-                    <h3>Dancheong: Colors of Tradition</h3>
-                    <p>Discover the meaning behind the vibrant colors and patterns used in Korean temple art and how they influence modern design.</p>
-                    <div class="author">
-                        <div class="author-icon">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="author-info">
-                            <div class="name">Min-jun Kim</div>
-                            <div class="date">April 28, 2023</div>
-                        </div>
+            <div class="bg-peach-primary/30 rounded-3xl p-8 md:p-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h3 class="text-3xl font-playfair font-bold mb-6">Hanbok: Traditional Attire</h3>
+                    <p class="text-lg mb-6">
+                        The Hanbok is Korea's traditional clothing characterized by vibrant colors and simple lines. 
+                        Worn for festivals, celebrations, and ceremonies, it reflects Korean aesthetics and social values.
+                    </p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-korean-red mt-1 mr-3"></i>
+                            <span>Women's Hanbok consists of a jeogori (jacket) and chima (skirt)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-korean-red mt-1 mr-3"></i>
+                            <span>Men's Hanbok includes a jeogori and baji (pants)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-korean-red mt-1 mr-3"></i>
+                            <span>Colors indicate social status and marital status</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="btn-primary px-8 py-3 rounded-full font-semibold text-white inline-flex items-center gap-2 shadow-lg">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="rounded-xl overflow-hidden shadow-lg h-64">
+                        <img src="https://images.unsplash.com/photo-1598880940085-44e76e1323c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Women's Hanbok" class="w-full h-full object-cover">
+                    </div>
+                    <div class="rounded-xl overflow-hidden shadow-lg h-64">
+                        <img src="https://images.unsplash.com/photo-1580519542036-c47de6196ba5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Men's Hanbok" class="w-full h-full object-cover">
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Traditional Practices -->
+    <section class="py-24 bg-peach-secondary relative">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-playfair font-bold mb-4 relative inline-block">
+                    Traditional Practices
+                </h2>
+                <p class="text-peach-dark max-w-3xl mx-auto text-lg">
+                    Time-honored customs that continue to shape Korean society
+                </p>
             </div>
             
-            <!-- Insight 3 -->
-            <div class="insight-card">
-                <div class="insight-img" style="background-image: url('https://images.unsplash.com/photo-1615880484746-a134be9a6ecf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
-                <div class="insight-content">
-                    <span class="insight-category">Modern</span>
-                    <h3>Hallyu: The Korean Wave</h3>
-                    <p>How K-pop and Korean dramas have transformed traditional aesthetics into global fashion trends.</p>
-                    <div class="author">
-                        <div class="author-icon">
-                            <i class="fas fa-user"></i>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-2">
+                        <div class="p-8">
+                            <div class="w-14 h-14 rounded-full bg-peach-primary flex items-center justify-center mb-6">
+                                <i class="fas fa-mug-hot text-korean-red text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-playfair font-bold mb-4">Korean Tea Ceremony</h3>
+                            <p class="text-gray-600 mb-6">
+                                The Korean tea ceremony, called Darye, is a traditional form of tea etiquette that represents harmony, respect, and tranquility. 
+                                It's a spiritual practice that emphasizes mindfulness and appreciation of nature.
+                            </p>
+                            <ul class="space-y-3">
+                                <li class="flex items-start">
+                                    <i class="fas fa-leaf text-peach-accent mt-1 mr-3"></i>
+                                    <span>Focuses on green teas like Jeoncha and Ujeon</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-hand-holding-heart text-peach-accent mt-1 mr-3"></i>
+                                    <span>Emphasizes simplicity and naturalness</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-mountain text-peach-accent mt-1 mr-3"></i>
+                                    <span>Reflects Korean appreciation for nature</span>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="author-info">
-                            <div class="name">Soo-ah Lee</div>
-                            <div class="date">June 3, 2023</div>
+                        <div class="h-80 md:h-full">
+                            <img src="https://images.unsplash.com/photo-1547592185-b88dee1e0a60?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Tea Ceremony" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-2">
+                        <div class="p-8">
+                            <div class="w-14 h-14 rounded-full bg-peach-primary flex items-center justify-center mb-6">
+                                <i class="fas fa-home text-korean-red text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-playfair font-bold mb-4">Hanok Traditional Houses</h3>
+                            <p class="text-gray-600 mb-6">
+                                Hanok are traditional Korean houses designed in harmony with nature. 
+                                Built with natural materials like wood, stone, and clay, they feature the unique ondol heating system and elegant architectural lines.
+                            </p>
+                            <ul class="space-y-3">
+                                <li class="flex items-start">
+                                    <i class="fas fa-tree text-peach-accent mt-1 mr-3"></i>
+                                    <span>Built using natural, eco-friendly materials</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-fire text-peach-accent mt-1 mr-3"></i>
+                                    <span>Ondol underfloor heating system</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-wind text-peach-accent mt-1 mr-3"></i>
+                                    <span>Designed for natural cooling in summer</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="h-80 md:h-full">
+                            <img src="https://images.unsplash.com/photo-1598880791611-7d1d482e55d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Hanok House" class="w-full h-full object-cover">
                         </div>
                     </div>
                 </div>
@@ -530,113 +316,188 @@
         </div>
     </section>
 
-    <!-- Traditional Elements -->
-    <section class="traditional">
-        <div class="container">
-            <div class="section-title">
-                <h2>Traditional Elements in Modern Fashion</h2>
+
+    <!-- Festivals Section -->
+    <section class="py-24 bg-peach-primary/30 relative">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-playfair font-bold mb-4 relative inline-block">
+                    Cultural Festivals
+                </h2>
+                <p class="text-peach-dark max-w-3xl mx-auto text-lg">
+                    Celebrations that bring Korean traditions to life
+                </p>
             </div>
             
-            <div class="elements">
-                <div class="element-card">
-                    <div class="element-icon">
-                        <i class="fas fa-palette"></i>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Festival 1 -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden transition-transform duration-300 hover:-translate-y-2">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1564466809055-3c4e86ed1e1a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Seollal" class="w-full h-full object-cover">
                     </div>
-                    <h3>Color Symbolism</h3>
-                    <p>Traditional Korean color meanings translated into contemporary palettes</p>
+                    <div class="p-8">
+                        <div class="text-peach-dark font-bold mb-3">Lunar New Year</div>
+                        <h3 class="text-2xl font-playfair font-bold mb-4">Seollal</h3>
+                        <p class="text-gray-600 mb-6">
+                            The Korean Lunar New Year, typically celebrated in January or February. Families gather to perform ancestral rites, wear hanbok, 
+                            play traditional games, and share special foods like tteokguk (rice cake soup).
+                        </p>
+                        <a href="#" class="text-korean-red font-semibold flex items-center gap-2">
+                            Learn More <i class="fas fa-arrow-right text-sm"></i>
+                        </a>
+                    </div>
                 </div>
                 
-                <div class="element-card">
-                    <div class="element-icon">
-                        <i class="fas fa-draw-polygon"></i>
+                <!-- Festival 2 -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden transition-transform duration-300 hover:-translate-y-2">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1603852452515-2dc92bd9c6f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80" alt="Chuseok" class="w-full h-full object-cover">
                     </div>
-                    <h3>Dancheong Patterns</h3>
-                    <p>Ancient temple patterns reimagined in modern textiles</p>
+                    <div class="p-8">
+                        <div class="text-peach-dark font-bold mb-3">Harvest Festival</div>
+                        <h3 class="text-2xl font-playfair font-bold mb-4">Chuseok</h3>
+                        <p class="text-gray-600 mb-6">
+                            Often called Korean Thanksgiving, Chuseok is celebrated in autumn. Families gather to give thanks to ancestors, 
+                            share food like songpyeon (rice cakes), and participate in folk games like ganggangsullae (circle dance).
+                        </p>
+                        <a href="#" class="text-korean-red font-semibold flex items-center gap-2">
+                            Learn More <i class="fas fa-arrow-right text-sm"></i>
+                        </a>
+                    </div>
                 </div>
                 
-                <div class="element-card">
-                    <div class="element-icon">
-                        <i class="fas fa-vest"></i>
+                <!-- Festival 3 -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden transition-transform duration-300 hover:-translate-y-2">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Buddha's Birthday" class="w-full h-full object-cover">
                     </div>
-                    <h3>Hanbok Silhouettes</h3>
-                    <p>Traditional garment shapes adapted for contemporary wear</p>
-                </div>
-                
-                <div class="element-card">
-                    <div class="element-icon">
-                        <i class="fas fa-knot"></i>
+                    <div class="p-8">
+                        <div class="text-peach-dark font-bold mb-3">Spring Celebration</div>
+                        <h3 class="text-2xl font-playfair font-bold mb-4">Buddha's Birthday</h3>
+                        <p class="text-gray-600 mb-6">
+                            Celebrated on the eighth day of the fourth lunar month, this festival features lotus lantern parades, 
+                            temple decorations, and free meals at Buddhist temples. The streets are filled with colorful lanterns.
+                        </p>
+                        <a href="#" class="text-korean-red font-semibold flex items-center gap-2">
+                            Learn More <i class="fas fa-arrow-right text-sm"></i>
+                        </a>
                     </div>
-                    <h3>Norigae Accessories</h3>
-                    <p>Traditional pendants transformed into modern jewelry</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Cultural Quote -->
-    <section class="culture-intro">
-        <div class="container">
-            <blockquote style="font-style: italic; font-size: 1.4rem; max-width: 800px; margin: 0 auto; text-align: center; padding: 30px 0;">
-                "Fashion is not just about clothes. It's about carrying forward our heritage, telling stories through fabric and form, and connecting generations through design."
-            </blockquote>
-            <p style="text-align: center; margin-top: 15px; font-weight: 500;">- Lee Young-hee, Master Hanbok Designer</p>
-        </div>
-    </section>
-
-    <!-- Newsletter -->
-    <section class="newsletter">
-        <div class="container">
-            <h2>Explore Korean Fashion Heritage</h2>
-            <p>Subscribe to receive cultural insights and updates on our latest collections</p>
-            <form class="newsletter-form">
-                <input type="email" placeholder="Your email address">
-                <button type="submit">Subscribe</button>
-            </form>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-col">
-                    <h3>Dancheong Diary</h3>
-                    <p>Korean-inspired fashion that bridges tradition and modernity. Our collections celebrate cultural heritage through contemporary design.</p>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-pinterest"></i></a>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+    <footer class="bg-text-dark text-white pt-20 pb-10">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
+                <!-- Column 1 -->
+                <div>
+                    <h3 class="text-xl font-playfair font-bold mb-6 relative pb-3">KoreaVerse</h3>
+                    <p class="text-gray-400 mb-6">
+                        Discover the beauty and depth of Korean heritage through our curated content and resources.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center transition-all hover:bg-korean-red hover:-translate-y-1">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center transition-all hover:bg-korean-red hover:-translate-y-1">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center transition-all hover:bg-korean-red hover:-translate-y-1">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center transition-all hover:bg-korean-red hover:-translate-y-1">
+                            <i class="fab fa-youtube"></i>
+                        </a>
                     </div>
                 </div>
                 
-                <div class="footer-col">
-                    <h3>Explore</h3>
-                    <ul>
-                        <li><a href="#">Collections</a></li>
-                        <li><a href="#">Lookbooks</a></li>
-                        <li><a href="#">Trend Reports</a></li>
-                        <li><a href="#">Cultural Notes</a></li>
-                        <li><a href="#">Street Style</a></li>
+                <!-- Column 2 -->
+                <div>
+                    <h3 class="text-xl font-playfair font-bold mb-6 relative pb-3">Explore</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Home</a></li>
+                        <li><a href="culture.html" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Korean Culture</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Traditional Cuisine</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> K-Pop & Entertainment</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Travel Guides</a></li>
                     </ul>
                 </div>
                 
-
+                <!-- Column 3 -->
+                <div>
+                    <h3 class="text-xl font-playfair font-bold mb-6 relative pb-3">Resources</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Cultural Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Traditional Recipes</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Festival Calendar</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Language Learning</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Photo Gallery</a></li>
+                    </ul>
+                </div>
                 
-                <div class="footer-col">
-                    <h3>Contact</h3>
-                    <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> Seoul, South Korea</li>
-                        <li><i class="fas fa-envelope"></i> hello@dancheongdiary.com</li>
-                        <li><i class="fas fa-phone"></i> +82 2 1234 5678</li>
+                <!-- Column 4 -->
+                <div>
+                    <h3 class="text-xl font-playfair font-bold mb-6 relative pb-3">Contact Us</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope text-peach-accent mt-1 mr-3"></i>
+                            <span class="text-gray-400">contact@koreaverse.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone text-peach-accent mt-1 mr-3"></i>
+                            <span class="text-gray-400">+82 2 123 4567</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-peach-accent mt-1 mr-3"></i>
+                            <span class="text-gray-400">Seoul, South Korea</span>
+                        </li>
                     </ul>
                 </div>
             </div>
             
-            <div class="copyright">
-                <p>&copy; 2023 Dancheong Diary. All rights reserved. | Inspired by Korean Heritage</p>
+            <div class="pt-8 border-t border-gray-700 text-center text-gray-500">
+                <p>&copy; 2025 KoreaVerse. All rights reserved.</p>
             </div>
         </div>
     </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('nav');
+        
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('hidden');
+            navMenu.classList.toggle('block');
+        });
+        
+        // Animation for timeline items
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateX(0)';
+                    timelineObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        timelineItems.forEach(item => {
+            item.style.opacity = '0';
+            if(item.classList.contains('md:pl-[calc(50%+30px)]')) {
+                item.style.transform = 'translateX(-50px)';
+            } else {
+                item.style.transform = 'translateX(50px)';
+            }
+            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            timelineObserver.observe(item);
+        });
+    </script>
 </body>
 </html>

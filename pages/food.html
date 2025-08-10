@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Korean Cuisine | KoreaVerse</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'peach-primary': '#FFDAB9',
+                        'peach-secondary': '#FFE5B4',
+                        'peach-light': '#FFF5EE',
+                        'peach-accent': '#FFA07A',
+                        'peach-dark': '#FF8C00',
+                        'korean-red': '#CD1818',
+                        'text-dark': '#333333',
+                        'text-light': '#ffffff',
+                    },
+                    fontFamily: {
+                        playfair: ['Playfair Display', 'serif'],
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                    animation: {
+                        'fadeInDown': 'fadeInDown 1s ease',
+                        'fadeInUp': 'fadeInUp 1s ease 0.3s forwards',
+                    },
+                    keyframes: {
+                        fadeInDown: {
+                            '0%': { opacity: 0, transform: 'translateY(-30px)' },
+                            '100%': { opacity: 1, transform: 'translateY(0)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: 0, transform: 'translateY(30px)' },
+                            '100%': { opacity: 1, transform: 'translateY(0)' },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+    
+    </style>
+</head>
+<body class="font-poppins text-text-dark bg-gradient-to-b from-peach-light to-peach-secondary">
+    <!-- Header -->
+    <header class="bg-white/95 backdrop-blur-md shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-5">
+                <a href="index.html" class="logo flex items-center">
+                    <div class="logo-icon">
+                        <i class="fas fa-utensils text-white text-2xl z-10"></i>
+                    </div>
+                    <div class="logo-text font-playfair font-extrabold text-3xl text-korean-red">
+                        Korea<span class="text-peach-dark">Verse</span>
+                    </div>
+                </a>
+                
+                <button class="mobile-menu-btn hidden md:hidden text-2xl z-50" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <nav id="mainNav" class="hidden md:block">
+                    <ul class="flex space-x-8">
+                        <li><a href="./index.html" class="nav-link">Home</a></li>
+                        <li><a href="culture.html" class="nav-link">Culture</a></li>
+                        <li><a href="food.html" class="nav-link active">Food</a></li>
+                        <li><a href="kpop.html" class="nav-link">K-Pop</a></li>
+                        <li><a href="#" class="nav-link">Learn</a></li>
+                        <li><a href="#" class="nav-link">About</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="food-hero bg-cover bg-center relative py-32 md:py-40" style="background-image: linear-gradient(135deg, rgba(39, 38, 38, 0.9) 0%, rgba(10, 10, 10, 0.9) 100%), url('https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h1 class="font-playfair font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-6 animate-fadeInDown">
+                    Discover the <span class="text-korean-red block">Flavors of Korea</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-white mb-10 animate-fadeInUp opacity-0">
+                    Experience the vibrant tastes and culinary traditions of Korean cuisine
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Dishes -->
+    <section class="popular-dishes py-20 md:py-28 relative">
+        <div class="container mx-auto px-4">
+            <div class="section-title text-center mb-16">
+                <h2 class="font-playfair font-bold text-3xl md:text-4xl text-text-dark mb-4">
+                    Iconic Korean Dishes
+                </h2>
+                <p class="text-lg">
+                    Explore the most beloved dishes in Korean cuisine
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Kimchi -->
+                <div class="dish-card opacity-0 translate-y-8 transition-all duration-700">
+                    <div class="dish-image h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Kimchi">
+                    </div>
+                    <div class="dish-content p-6">
+                        <h3 class="font-playfair font-bold text-xl md:text-2xl text-korean-red mb-4">
+                            Kimchi
+                        </h3>
+                        <p class="text-gray-600 mb-5">
+                            Fermented vegetables, usually cabbage or radishes, seasoned with chili pepper, garlic, ginger, and other spices. A staple in Korean cuisine.
+                        </p>
+                        <div class="dish-meta flex justify-between border-t border-gray-200 pt-4 mt-4 text-peach-dark font-medium">
+                            <span><i class="fas fa-fire mr-1"></i> Spicy</span>
+                            <span><i class="fas fa-clock mr-1"></i> Fermented</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bibimbap -->
+                <div class="dish-card opacity-0 translate-y-8 transition-all duration-700">
+                    <div class="dish-image h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Bibimbap">
+                    </div>
+                    <div class="dish-content p-6">
+                        <h3 class="font-playfair font-bold text-xl md:text-2xl text-korean-red mb-4">
+                            Bibimbap
+                        </h3>
+                        <p class="text-gray-600 mb-5">
+                            A colorful bowl of warm rice topped with sautéed vegetables, chili paste, soy sauce, and a fried egg or sliced meat.
+                        </p>
+                        <div class="dish-meta flex justify-between border-t border-gray-200 pt-4 mt-4 text-peach-dark font-medium">
+                            <span><i class="fas fa-leaf mr-1"></i> Vegetables</span>
+                            <span><i class="fas fa-bowl-food mr-1"></i> Rice Bowl</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bulgogi -->
+                <div class="dish-card opacity-0 translate-y-8 transition-all duration-700">
+                    <div class="dish-image h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Bulgogi">
+                    </div>
+                    <div class="dish-content p-6">
+                        <h3 class="font-playfair font-bold text-xl md:text-2xl text-korean-red mb-4">
+                            Bulgogi
+                        </h3>
+                        <p class="text-gray-600 mb-5">
+                            Thinly sliced marinated beef grilled to perfection. The marinade typically includes soy sauce, sugar, sesame oil, garlic, and pear.
+                        </p>
+                        <div class="dish-meta flex justify-between border-t border-gray-200 pt-4 mt-4 text-peach-dark font-medium">
+                            <span><i class="fas fa-drumstick-bite mr-1"></i> Beef</span>
+                            <span><i class="fas fa-fire mr-1"></i> Grilled</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tteokbokki -->
+                <div class="dish-card opacity-0 translate-y-8 transition-all duration-700">
+                    <div class="dish-image h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1606491956746-6b0d8b332d6f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Tteokbokki">
+                    </div>
+                    <div class="dish-content p-6">
+                        <h3 class="font-playfair font-bold text-xl md:text-2xl text-korean-red mb-4">
+                            Tteokbokki
+                        </h3>
+                        <p class="text-gray-600 mb-5">
+                            Chewy rice cakes cooked in a sweet and spicy gochujang-based sauce. Often includes fish cakes and boiled eggs.
+                        </p>
+                        <div class="dish-meta flex justify-between border-t border-gray-200 pt-4 mt-4 text-peach-dark font-medium">
+                            <span><i class="fas fa-fire mr-1"></i> Spicy</span>
+                            <span><i class="fas fa-utensils mr-1"></i> Street Food</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Street Food Section -->
+    <section class="street-food bg-peach-primary py-20 md:py-28 relative">
+        <div class="container mx-auto px-4">
+            <div class="section-title text-center mb-16">
+                <h2 class="font-playfair font-bold text-3xl md:text-4xl text-text-dark mb-4">
+                    Korean Street Food
+                </h2>
+                <p class="text-lg">
+                    Delicious snacks you can find in Korean markets
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Hotteok -->
+                <div class="street-item">
+                    <div class="street-image h-52 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1626082895100-85d0a3e0d7e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Hotteok">
+                    </div>
+                    <div class="street-content p-5 text-center">
+                        <h3 class="font-playfair font-bold text-xl text-korean-red mb-2">
+                            Hotteok
+                        </h3>
+                        <p class="text-gray-700">
+                            Sweet filled pancakes
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Gimbap -->
+                <div class="street-item">
+                    <div class="street-image h-52 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Gimbap">
+                    </div>
+                    <div class="street-content p-5 text-center">
+                        <h3 class="font-playfair font-bold text-xl text-korean-red mb-2">
+                            Gimbap
+                        </h3>
+                        <p class="text-gray-700">
+                            Seaweed rice rolls
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Odeng -->
+                <div class="street-item">
+                    <div class="street-image h-52 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Odeng">
+                    </div>
+                    <div class="street-content p-5 text-center">
+                        <h3 class="font-playfair font-bold text-xl text-korean-red mb-2">
+                            Odeng
+                        </h3>
+                        <p class="text-gray-700">
+                            Fish cake skewers
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Bungeoppang -->
+                <div class="street-item">
+                    <div class="street-image h-52 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1626082895100-85d0a3e0d7e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Bungeoppang">
+                    </div>
+                    <div class="street-content p-5 text-center">
+                        <h3 class="font-playfair font-bold text-xl text-korean-red mb-2">
+                            Bungeoppang
+                        </h3>
+                        <p class="text-gray-700">
+                            Fish-shaped pastry
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery bg-peach-secondary py-20 md:py-28">
+        <div class="container mx-auto px-4">
+            <div class="section-title text-center mb-16">
+                <h2 class="font-playfair font-bold text-3xl md:text-4xl text-text-dark mb-4">
+                    Korean Food Gallery
+                </h2>
+                <p class="text-lg">
+                    A visual feast of Korean culinary delights
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1446&q=80" alt="Korean BBQ">
+                    <div class="gallery-overlay">
+                        <h3 class="font-playfair font-bold text-xl">Korean BBQ</h3>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Korean Pancakes">
+                    <div class="gallery-overlay">
+                        <h3 class="font-playfair font-bold text-xl">Korean Pancakes</h3>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1626082895100-85d0a3e0d7e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Korean Desserts">
+                    <div class="gallery-overlay">
+                        <h3 class="font-playfair font-bold text-xl">Korean Desserts</h3>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Kimchi Variety">
+                    <div class="gallery-overlay">
+                        <h3 class="font-playfair font-bold text-xl">Kimchi Variety</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-text-dark text-white pt-20 pb-10">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
+                <!-- Column 1 -->
+                <div>
+                    <h3 class="text-xl font-playfair font-bold mb-6 relative pb-3">KoreaVerse</h3>
+                    <p class="text-gray-400 mb-6">
+                        Discover the beauty and depth of Korean heritage through our curated content and resources.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center transition-all hover:bg-korean-red hover:-translate-y-1">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center transition-all hover:bg-korean-red hover:-translate-y-1">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center transition-all hover:bg-korean-red hover:-translate-y-1">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center transition-all hover:bg-korean-red hover:-translate-y-1">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Column 2 -->
+                <div>
+                    <h3 class="text-xl font-playfair font-bold mb-6 relative pb-3">Explore</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Home</a></li>
+                        <li><a href="culture.html" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Korean Culture</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Traditional Cuisine</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> K-Pop & Entertainment</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Travel Guides</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 3 -->
+                <div>
+                    <h3 class="text-xl font-playfair font-bold mb-6 relative pb-3">Resources</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Cultural Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Traditional Recipes</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Festival Calendar</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Language Learning</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Photo Gallery</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 4 -->
+                <div>
+                    <h3 class="text-xl font-playfair font-bold mb-6 relative pb-3">Contact Us</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope text-peach-accent mt-1 mr-3"></i>
+                            <span class="text-gray-400">contact@koreaverse.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone text-peach-accent mt-1 mr-3"></i>
+                            <span class="text-gray-400">+82 2 123 4567</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-peach-accent mt-1 mr-3"></i>
+                            <span class="text-gray-400">Seoul, South Korea</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-700 text-center text-gray-500">
+                <p>&copy; 2025 KoreaVerse. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle functionality
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('hidden');
+            mainNav.classList.toggle('block');
+            mainNav.classList.toggle('absolute');
+            mainNav.classList.toggle('top-full');
+            mainNav.classList.toggle('left-0');
+            mainNav.classList.toggle('w-full');
+            mainNav.classList.toggle('bg-white');
+            mainNav.classList.toggle('shadow-lg');
+            mainNav.classList.toggle('py-5');
+        });
+        
+        // Animation for dish cards
+        const dishCards = document.querySelectorAll('.dish-card');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        dishCards.forEach(card => {
+            observer.observe(card);
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mainNav.contains(e.target) && !mobileMenuBtn.contains(e.target) && 
+                !mainNav.classList.contains('hidden')) {
+                mainNav.classList.add('hidden');
+                mainNav.classList.remove('block');
+            }
+        });
+    </script>
+</body>
+</html>

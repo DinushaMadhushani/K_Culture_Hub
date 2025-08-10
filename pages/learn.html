@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Korean | KoreaVerse</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'peach-light': '#FFF5EE',
+                        'peach-primary': '#FFDAB9',
+                        'peach-secondary': '#FFE5B4',
+                        'peach-accent': '#FFA07A',
+                        'peach-dark': '#FF8C00',
+                        'korean-red': '#CD1818',
+                        'text-dark': '#333333',
+                        'text-light': '#ffffff',
+                        'learning-blue': '#3B82F6',
+                    },
+                    fontFamily: {
+                        'playfair': ['Playfair Display', 'serif'],
+                        'poppins': ['Poppins', 'sans-serif'],
+                    },
+                    animation: {
+                        'fadeInDown': 'fadeInDown 0.8s ease forwards',
+                        'fadeInUp': 'fadeInUp 0.8s ease forwards',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeInDown: {
+                            '0%': { opacity: '0', transform: 'translateY(-30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/css">
+        body {
+            background-color: #FFF5EE;
+            overflow-x: hidden;
+            font-family: 'Poppins', sans-serif;
+        }
+        .logo-icon {
+            background: linear-gradient(135deg, #FF8C00, #CD1818);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(255, 140, 0, 0.3);
+        }
+        .logo-icon::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3) 1px, transparent 2px),
+                radial-gradient(circle at 70% 70%, rgba(255,255,255,0.3) 1px, transparent 2px);
+            background-size: 20px 20px;
+        }
+        .learning-hero {
+            background: 
+                linear-gradient(135deg, rgba(255, 218, 185, 0.9) 0%, rgba(255, 229, 180, 0.9) 100%),
+                url('https://images.unsplash.com/photo-1619983081563-430f63602d54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover;
+        }
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #CD1818;
+            border-radius: 2px;
+        }
+        .lesson-card {
+            transition: all 0.3s ease;
+        }
+        .lesson-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        .language-tip {
+            border-left: 4px solid #CD1818;
+        }
+        .hangul-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+        }
+        .hangul-item {
+            transition: all 0.3s ease;
+        }
+        .hangul-item:hover {
+            transform: scale(1.1);
+            background: #FFE5B4;
+        }
+        .phrase-card {
+            transition: all 0.3s ease;
+        }
+        .phrase-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #CD1818;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+        .nav-link.active {
+            color: #CD1818;
+            font-weight: 600;
+        }
+        .progress-bar {
+            height: 8px;
+            background: #FFE5B4;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, #FF8C00, #CD1818);
+            border-radius: 4px;
+        }
+        .resource-card {
+            transition: all 0.3s ease;
+        }
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="font-poppins text-text-dark bg-peach-light overflow-x-hidden">
+    <!-- Floating decorative elements -->
+    <div class="fixed top-1/4 left-10 w-8 h-8 rounded-full bg-korean-red opacity-20 floating-element"></div>
+    <div class="fixed top-1/3 right-20 w-12 h-12 rounded-full bg-peach-accent opacity-15 floating-element" style="animation-delay: 0.5s;"></div>
+    <div class="fixed bottom-1/4 left-1/3 w-10 h-10 rounded-full bg-peach-dark opacity-15 floating-element" style="animation-delay: 1s;"></div>
+    
+    <!-- Header -->
+    <header class="bg-white/95 shadow-md sticky top-0 z-50 backdrop-blur-md">
+        <div class="container mx-auto px-4 py-5 flex justify-between items-center">
+            <a href="index.html" class="logo flex items-center no-underline">
+                <div class="logo-icon w-14 h-14 rounded-full flex items-center justify-center mr-3">
+                    <i class="fas fa-book-open text-white text-2xl relative z-10"></i>
+                </div>
+                <div class="logo-text text-korean-red text-2xl md:text-3xl font-playfair font-bold relative">
+                    Korea<span class="text-peach-dark">Verse</span>
+                </div>
+            </a>
+            
+            <button class="mobile-menu-btn md:hidden text-2xl z-50" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav" class="hidden md:block">
+                <ul class="flex space-x-8">
+                    <li><a href="index.html" class="nav-link text-lg font-medium">Home</a></li>
+                    <li><a href="culture.html" class="nav-link text-lg font-medium">Culture</a></li>
+                    <li><a href="food.html" class="nav-link text-lg font-medium">Food</a></li>
+                    <li><a href="kpop.html" class="nav-link text-lg font-medium">K-Pop</a></li>
+                    <li><a href="learn.html" class="nav-link text-lg font-medium active">Learn</a></li>
+                    <li><a href="#" class="nav-link text-lg font-medium">About</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div id="mobileMenu" class="hidden md:hidden absolute top-full left-0 w-full bg-white shadow-lg py-5 px-4">
+            <ul class="space-y-4">
+                <li><a href="index.html" class="nav-link block py-2">Home</a></li>
+                <li><a href="culture.html" class="nav-link block py-2">Culture</a></li>
+                <li><a href="food.html" class="nav-link block py-2">Food</a></li>
+                <li><a href="kpop.html" class="nav-link block py-2">K-Pop</a></li>
+                <li><a href="learn.html" class="nav-link active block py-2">Learn</a></li>
+                <li><a href="#" class="nav-link block py-2">About</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="learning-hero min-h-[70vh] flex items-center relative overflow-hidden">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-3xl">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-playfair font-bold mb-5 text-text-dark animate-fadeInDown leading-tight">
+                    Learn Korean <span class="text-korean-red block mt-3">Language & Culture</span>
+                </h1>
+                <p class="text-xl md:text-2xl mb-10 text-text-dark animate-fadeInUp opacity-0">
+                    Start your journey to mastering Korean with our comprehensive lessons and cultural insights
+                </p>
+                <div class="animate-fadeInUp opacity-0 animation-delay-300">
+                    <a href="#lessons" class="bg-korean-red hover:bg-red-800 px-10 py-4 rounded-full font-semibold text-lg text-white inline-flex items-center gap-2 shadow-lg">
+                        <i class="fas fa-graduation-cap"></i> Start Learning
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Decorative elements -->
+        <div class="absolute bottom-10 right-10 w-16 h-16 rounded-full bg-korean-red opacity-10 animate-pulse"></div>
+        <div class="absolute top-20 left-10 w-12 h-12 rounded-full bg-peach-dark opacity-10 animate-pulse" style="animation-delay: 0.5s;"></div>
+    </section>
+
+    <!-- Learning Path -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="inline-block bg-learning-blue/20 text-learning-blue px-6 py-2 rounded-full mb-4 text-sm font-bold">
+                    LEARNING PATH
+                </span>
+                <h2 class="text-3xl md:text-4xl font-playfair font-bold mb-4 relative inline-block">
+                    Your Korean Learning Journey
+                </h2>
+                <p class="text-gray-600 max-w-xl mx-auto">
+                    Follow our structured path from beginner to advanced Korean proficiency
+                </p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row gap-8 items-center mb-16">
+                <div class="md:w-1/3">
+                    <div class="bg-peach-light rounded-2xl p-8 shadow-lg">
+                        <div class="text-center mb-6">
+                            <div class="w-20 h-20 rounded-full bg-korean-red text-white flex items-center justify-center text-3xl mx-auto mb-4">
+                                A1
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Beginner</h3>
+                            <p class="text-gray-600">Learn Hangul and basic phrases</p>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">Your Progress</span>
+                                <span class="font-medium">25%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill w-1/4"></div>
+                            </div>
+                        </div>
+                        
+                        <ul class="space-y-3">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-korean-red mr-2"></i>
+                                <span>Hangul Mastery</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-korean-red mr-2"></i>
+                                <span>Basic Greetings</span>
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i class="far fa-circle mr-2"></i>
+                                <span>Daily Expressions</span>
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i class="far fa-circle mr-2"></i>
+                                <span>Simple Grammar</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/3">
+                    <div class="bg-peach-light rounded-2xl p-8 shadow-lg border-2 border-korean-red relative">
+                        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-korean-red text-white px-4 py-1 rounded-full">
+                            Current Level
+                        </div>
+                        <div class="text-center mb-6">
+                            <div class="w-20 h-20 rounded-full bg-korean-red text-white flex items-center justify-center text-3xl mx-auto mb-4">
+                                A2
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Elementary</h3>
+                            <p class="text-gray-600">Form sentences and hold simple conversations</p>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">Your Progress</span>
+                                <span class="font-medium">10%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill w-1/10"></div>
+                            </div>
+                        </div>
+                        
+                        <ul class="space-y-3">
+                            <li class="flex items-center text-gray-400">
+                                <i class="far fa-circle mr-2"></i>
+                                <span>Present Tense</span>
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i class="far fa-circle mr-2"></i>
+                                <span>Basic Verbs</span>
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i class="far fa-circle mr-2"></i>
+                                <span>Question Forms</span>
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i class="far fa-circle mr-2"></i>
+                                <span>Everyday Vocabulary</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/3">
+                    <div class="bg-peach-light rounded-2xl p-8 shadow-lg">
+                        <div class="text-center mb-6">
+                            <div class="w-20 h-20 rounded-full bg-gray-300 text-white flex items-center justify-center text-3xl mx-auto mb-4">
+                                B1
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Intermediate</h3>
+                            <p class="text-gray-600">Express complex ideas and understand native content</p>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">Your Progress</span>
+                                <span class="font-medium">0%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill w-0"></div>
+                            </div>
+                        </div>
+                        
+                        <ul class="space-y-3">
+                            <li class="flex items-center text-gray-400">
+                                <i class="far fa-circle mr-2"></i>
+                                <span>Past/Future Tenses</span>
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i class="far fa-circle mr-2"></i>
+                                <span>Complex Sentences</span>
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i class="far fa-circle mr-2"></i>
+                                <span>Idioms & Slang</span>
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i class="far fa-circle mr-2"></i>
+                                <span>Cultural Nuances</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lessons Section -->
+    <section id="lessons" class="py-24 bg-gradient-to-b from-white to-peach-light">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="inline-block bg-korean-red/20 text-korean-red px-6 py-2 rounded-full mb-4 text-sm font-bold">
+                    LESSONS
+                </span>
+                <h2 class="text-3xl md:text-4xl font-playfair font-bold mb-4 relative inline-block">
+                    Start Learning Today
+                </h2>
+                <p class="text-gray-600 max-w-xl mx-auto">
+                    Interactive lessons designed to make learning Korean enjoyable and effective
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Lesson 1 -->
+                <div class="lesson-card bg-white rounded-2xl overflow-hidden shadow-lg">
+                    <div class="h-56 bg-korean-red flex items-center justify-center">
+                        <span class="text-white text-7xl font-bold">가</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <span class="bg-peach-primary text-korean-red px-3 py-1 rounded-full text-sm font-bold">Beginner</span>
+                            <span class="ml-auto text-gray-500"><i class="far fa-clock mr-1"></i> 15 min</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Hangul Basics</h3>
+                        <p class="text-gray-600 mb-5">Learn the Korean alphabet with our interactive guide. Master vowels, consonants, and pronunciation.</p>
+                        <div class="flex items-center">
+                            <span class="text-gray-500 mr-4"><i class="fas fa-book mr-1"></i> 12 Modules</span>
+                            <a href="#" class="ml-auto bg-korean-red hover:bg-red-800 text-white px-5 py-2 rounded-full font-medium transition-colors">
+                                Start Lesson
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Lesson 2 -->
+                <div class="lesson-card bg-white rounded-2xl overflow-hidden shadow-lg">
+                    <div class="h-56 bg-peach-dark flex items-center justify-center">
+                        <span class="text-white text-5xl font-bold">안녕하세요</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <span class="bg-peach-primary text-korean-red px-3 py-1 rounded-full text-sm font-bold">Beginner</span>
+                            <span class="ml-auto text-gray-500"><i class="far fa-clock mr-1"></i> 20 min</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Essential Greetings</h3>
+                        <p class="text-gray-600 mb-5">Master Korean greetings for any situation. Learn how to say hello, introduce yourself, and more.</p>
+                        <div class="flex items-center">
+                            <span class="text-gray-500 mr-4"><i class="fas fa-book mr-1"></i> 8 Modules</span>
+                            <a href="#" class="ml-auto bg-korean-red hover:bg-red-800 text-white px-5 py-2 rounded-full font-medium transition-colors">
+                                Start Lesson
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Lesson 3 -->
+                <div class="lesson-card bg-white rounded-2xl overflow-hidden shadow-lg">
+                    <div class="h-56 bg-learning-blue flex items-center justify-center">
+                        <span class="text-white text-5xl font-bold">맛있어요</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <span class="bg-peach-primary text-korean-red px-3 py-1 rounded-full text-sm font-bold">Elementary</span>
+                            <span class="ml-auto text-gray-500"><i class="far fa-clock mr-1"></i> 25 min</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Food & Dining</h3>
+                        <p class="text-gray-600 mb-5">Order food, talk about flavors, and navigate Korean restaurants with confidence.</p>
+                        <div class="flex items-center">
+                            <span class="text-gray-500 mr-4"><i class="fas fa-book mr-1"></i> 10 Modules</span>
+                            <a href="#" class="ml-auto bg-korean-red hover:bg-red-800 text-white px-5 py-2 rounded-full font-medium transition-colors">
+                                Start Lesson
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hangul & Phrases -->
+    <section class="py-24 bg-peach-primary">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <div class="mb-10">
+                        <span class="inline-block bg-korean-red/20 text-korean-red px-6 py-2 rounded-full mb-4 text-sm font-bold">
+                            HANGUL
+                        </span>
+                        <h2 class="text-3xl md:text-4xl font-playfair font-bold mb-4">
+                            Korean Alphabet
+                        </h2>
+                        <p class="text-gray-700 mb-6">
+                            Hangul is the Korean alphabet, created by King Sejong in 1443. It's considered one of the most scientific writing systems in the world.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl p-6 shadow-lg mb-8">
+                        <h3 class="font-bold text-lg mb-4">Basic Vowels</h3>
+                        <div class="hangul-grid">
+                            <div class="hangul-item bg-peach-light rounded-lg p-4 text-center cursor-pointer">
+                                <div class="text-2xl font-bold mb-1">ㅏ</div>
+                                <div class="text-sm">a</div>
+                            </div>
+                            <div class="hangul-item bg-peach-light rounded-lg p-4 text-center cursor-pointer">
+                                <div class="text-2xl font-bold mb-1">ㅑ</div>
+                                <div class="text-sm">ya</div>
+                            </div>
+                            <div class="hangul-item bg-peach-light rounded-lg p-4 text-center cursor-pointer">
+                                <div class="text-2xl font-bold mb-1">ㅓ</div>
+                                <div class="text-sm">eo</div>
+                            </div>
+                            <div class="hangul-item bg-peach-light rounded-lg p-4 text-center cursor-pointer">
+                                <div class="text-2xl font-bold mb-1">ㅕ</div>
+                                <div class="text-sm">yeo</div>
+                            </div>
+                            <div class="hangul-item bg-peach-light rounded-lg p-4 text-center cursor-pointer">
+                                <div class="text-2xl font-bold mb-1">ㅗ</div>
+                                <div class="text-sm">o</div>
+                            </div>
+                            <div class="hangul-item bg-peach-light rounded-lg p-4 text-center cursor-pointer">
+                                <div class="text-2xl font-bold mb-1">ㅛ</div>
+                                <div class="text-sm">yo</div>
+                            </div>
+                            <div class="hangul-item bg-peach-light rounded-lg p-4 text-center cursor-pointer">
+                                <div class="text-2xl font-bold mb-1">ㅜ</div>
+                                <div class="text-sm">u</div>
+                            </div>
+                            <div class="hangul-item bg-peach-light rounded-lg p-4 text-center cursor-pointer">
+                                <div class="text-2xl font-bold mb-1">ㅠ</div>
+                                <div class="text-sm">yu</div>
+                            </div>
+                            <div class="hangul-item bg-peach-light rounded-lg p-4 text-center cursor-pointer">
+                                <div class="text-2xl font-bold mb-1">ㅡ</div>
+                                <div class="text-sm">eu</div>
+                            </div>
+                            <div class="hangul-item bg-peach-light rounded-lg p-4 text-center cursor-pointer">
+                                <div class="text-2xl font-bold mb-1">ㅣ</div>
+                                <div class="text-sm">i</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl p-6 shadow-lg">
+                        <h3 class="font-bold text-lg mb-4">Did You Know?</h3>
+                        <div class="language-tip bg-peach-light/30 p-4 mb-4">
+                            <p class="text-gray-700">Hangul was designed to be easy to learn. The shapes of the consonants mimic the shape of the mouth when pronouncing them.</p>
+                        </div>
+                        <div class="language-tip bg-peach-light/30 p-4">
+                            <p class="text-gray-700">You can learn to read Hangul in just a few hours. Many learners report being able to read Korean script after a single day of study!</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="mb-10">
+                        <span class="inline-block bg-learning-blue/20 text-learning-blue px-6 py-2 rounded-full mb-4 text-sm font-bold">
+                            PHRASES
+                        </span>
+                        <h2 class="text-3xl md:text-4xl font-playfair font-bold mb-4">
+                            Essential Korean Phrases
+                        </h2>
+                        <p class="text-gray-700 mb-6">
+                            Start communicating in Korean with these essential phrases. Click the speaker icon to hear pronunciation.
+                        </p>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <!-- Phrase 1 -->
+                        <div class="phrase-card bg-white rounded-2xl p-6 shadow-lg flex items-start">
+                            <div class="bg-korean-red text-white w-12 h-12 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-volume-up"></i>
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="font-bold text-lg mb-1">Hello / Goodbye (when leaving)</h3>
+                                <div class="text-2xl font-bold mb-1">안녕히 가세요</div>
+                                <p class="text-gray-600 mb-2">Annyeonghi gaseyo</p>
+                                <p class="text-sm text-gray-500">Used when the other person is leaving</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Phrase 2 -->
+                        <div class="phrase-card bg-white rounded-2xl p-6 shadow-lg flex items-start">
+                            <div class="bg-korean-red text-white w-12 h-12 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-volume-up"></i>
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="font-bold text-lg mb-1">Thank you</h3>
+                                <div class="text-2xl font-bold mb-1">감사합니다</div>
+                                <p class="text-gray-600 mb-2">Gamsahamnida</p>
+                                <p class="text-sm text-gray-500">Polite form of thank you</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Phrase 3 -->
+                        <div class="phrase-card bg-white rounded-2xl p-6 shadow-lg flex items-start">
+                            <div class="bg-korean-red text-white w-12 h-12 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-volume-up"></i>
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="font-bold text-lg mb-1">How much is it?</h3>
+                                <div class="text-2xl font-bold mb-1">얼마예요?</div>
+                                <p class="text-gray-600 mb-2">Eolmayeyo?</p>
+                                <p class="text-sm text-gray-500">Essential for shopping</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Phrase 4 -->
+                        <div class="phrase-card bg-white rounded-2xl p-6 shadow-lg flex items-start">
+                            <div class="bg-korean-red text-white w-12 h-12 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-volume-up"></i>
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="font-bold text-lg mb-1">It's delicious</h3>
+                                <div class="text-2xl font-bold mb-1">맛있어요</div>
+                                <p class="text-gray-600 mb-2">Masisseoyo</p>
+                                <p class="text-sm text-gray-500">Compliment the chef!</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Phrase 5 -->
+                        <div class="phrase-card bg-white rounded-2xl p-6 shadow-lg flex items-start">
+                            <div class="bg-korean-red text-white w-12 h-12 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-volume-up"></i>
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="font-bold text-lg mb-1">Where is the bathroom?</h3>
+                                <div class="text-2xl font-bold mb-1">화장실이 어디예요?</div>
+                                <p class="text-gray-600 mb-2">Hwajangsiri eodiyeyo?</p>
+                                <p class="text-sm text-gray-500">An essential question</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="inline-block bg-peach-dark/20 text-peach-dark px-6 py-2 rounded-full mb-4 text-sm font-bold">
+                    RESOURCES
+                </span>
+                <h2 class="text-3xl md:text-4xl font-playfair font-bold mb-4 relative inline-block">
+                    Learning Resources
+                </h2>
+                <p class="text-gray-600 max-w-xl mx-auto">
+                    Tools and materials to accelerate your Korean learning journey
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Resource 1 -->
+                <div class="resource-card bg-peach-light rounded-2xl overflow-hidden shadow-lg">
+                    <div class="h-48 bg-gradient-to-r from-korean-red to-peach-dark flex items-center justify-center">
+                        <i class="fas fa-book text-white text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Textbooks & Workbooks</h3>
+                        <p class="text-gray-600 mb-5">Our recommended textbooks for structured learning from beginner to advanced levels.</p>
+                        <a href="#" class="text-korean-red font-semibold flex items-center gap-2">
+                            Explore Books <i class="fas fa-arrow-right text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Resource 2 -->
+                <div class="resource-card bg-peach-light rounded-2xl overflow-hidden shadow-lg">
+                    <div class="h-48 bg-gradient-to-r from-learning-blue to-cyan-500 flex items-center justify-center">
+                        <i class="fas fa-mobile-alt text-white text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Learning Apps</h3>
+                        <p class="text-gray-600 mb-5">Top-rated apps for learning Korean on the go, perfect for daily practice.</p>
+                        <a href="#" class="text-korean-red font-semibold flex items-center gap-2">
+                            Discover Apps <i class="fas fa-arrow-right text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Resource 3 -->
+                <div class="resource-card bg-peach-light rounded-2xl overflow-hidden shadow-lg">
+                    <div class="h-48 bg-gradient-to-r from-purple-500 to-indigo-700 flex items-center justify-center">
+                        <i class="fas fa-film text-white text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Korean Media</h3>
+                        <p class="text-gray-600 mb-5">Recommended K-Dramas, movies, and shows to immerse yourself in the language.</p>
+                        <a href="#" class="text-korean-red font-semibold flex items-center gap-2">
+                            Watch List <i class="fas fa-arrow-right text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Resource 4 -->
+                <div class="resource-card bg-peach-light rounded-2xl overflow-hidden shadow-lg">
+                    <div class="h-48 bg-gradient-to-r from-green-500 to-teal-600 flex items-center justify-center">
+                        <i class="fas fa-users text-white text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Language Exchange</h3>
+                        <p class="text-gray-600 mb-5">Connect with native Korean speakers for language exchange and practice.</p>
+                        <a href="#" class="text-korean-red font-semibold flex items-center gap-2">
+                            Find Partners <i class="fas fa-arrow-right text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-16 bg-gradient-to-r from-korean-red to-peach-dark">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="font-playfair font-bold text-3xl md:text-4xl text-white mb-4">
+                    Join Our Learning Community
+                </h2>
+                <p class="text-white/90 text-lg mb-8">
+                    Subscribe for weekly Korean lessons, cultural insights, and learning tips
+                </p>
+                
+                <form class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+                    <input type="email" placeholder="Your email address" class="flex-grow px-5 py-3 rounded-full focus:outline-none focus:ring-2 focus:ring-white">
+                    <button type="submit" class="bg-white text-korean-red font-bold px-8 py-3 rounded-full transition-colors shadow-lg">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-text-dark text-white pt-20 pb-10">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
+                <!-- Column 1 -->
+                <div>
+                    <h3 class="text-xl font-playfair font-bold mb-6 relative pb-3">KoreaVerse</h3>
+                    <p class="text-gray-400 mb-6">
+                        Discover the beauty and depth of Korean heritage through our curated content and resources.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center transition-all hover:bg-korean-red hover:-translate-y-1">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center transition-all hover:bg-korean-red hover:-translate-y-1">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center transition-all hover:bg-korean-red hover:-translate-y-1">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center transition-all hover:bg-korean-red hover:-translate-y-1">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Column 2 -->
+                <div>
+                    <h3 class="text-xl font-playfair font-bold mb-6 relative pb-3">Explore</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Home</a></li>
+                        <li><a href="culture.html" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Culture</a></li>
+                        <li><a href="food.html" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Food</a></li>
+                        <li><a href="kpop.html" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> K-Pop</a></li>
+                        <li><a href="learn.html" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Learn</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 3 -->
+                <div>
+                    <h3 class="text-xl font-playfair font-bold mb-6 relative pb-3">Learning Resources</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Beginner Lessons</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Grammar Guides</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Vocabulary Builders</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Pronunciation Practice</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-peach-accent transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-peach-accent"></i> Cultural Insights</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 4 -->
+                <div>
+                    <h3 class="text-xl font-playfair font-bold mb-6 relative pb-3">Contact Us</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope text-peach-accent mt-1 mr-3"></i>
+                            <span class="text-gray-400">contact@koreaverse.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone text-peach-accent mt-1 mr-3"></i>
+                            <span class="text-gray-400">+82 2 123 4567</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-peach-accent mt-1 mr-3"></i>
+                            <span class="text-gray-400">Seoul, South Korea</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-700 text-center text-gray-500">
+                <p>&copy; 2025 KoreaVerse. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-8 right-8 bg-korean-red text-white p-4 rounded-full shadow-lg hover:bg-red-800 transition-all opacity-0 scale-0">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <script>
+        // Mobile menu toggle functionality
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target) && 
+                !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+        
+        // Back to top button
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.remove('opacity-0', 'scale-0');
+                backToTopBtn.classList.add('opacity-100', 'scale-100');
+            } else {
+                backToTopBtn.classList.remove('opacity-100', 'scale-100');
+                backToTopBtn.classList.add('opacity-0', 'scale-0');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Audio playback for phrases
+        const phraseIcons = document.querySelectorAll('.fa-volume-up');
+        phraseIcons.forEach(icon => {
+            icon.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const parentCard = icon.closest('.phrase-card');
+                parentCard.classList.add('bg-peach-secondary');
+                
+                // Simulate audio playback effect
+                setTimeout(() => {
+                    parentCard.classList.remove('bg-peach-secondary');
+                }, 1000);
+            });
+        });
+        
+        // Progress animation
+        const progressFill = document.querySelector('.progress-fill');
+        setTimeout(() => {
+            progressFill.style.width = '25%';
+        }, 500);
+        
+        // Hangul character hover effect
+        const hangulItems = document.querySelectorAll('.hangul-item');
+        hangulItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const character = item.querySelector('div:first-child').textContent;
+                const pronunciation = item.querySelector('div:last-child').textContent;
+                
+                // Show alert with character info
+                alert(`Character: ${character}\nPronunciation: ${pronunciation}`);
+            });
+        });
+        
+        // Animate elements on scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.lesson-card, .resource-card');
+            elements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    el.style.opacity = "1";
+                    el.style.transform = "translateY(0)";
+                }
+            });
+        };
+        
+        // Set initial state for animated elements
+        document.querySelectorAll('.lesson-card, .resource-card').forEach(el => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(20px)";
+            el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+        });
+        
+        // Listen for scroll events
+        window.addEventListener('scroll', animateOnScroll);
+        // Trigger once on load
+        animateOnScroll();
+    </script>
+</body>
+</html>  ""
